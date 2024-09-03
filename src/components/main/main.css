@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+.hero-page {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-top: 88px;
+  padding-top: 72px;
+  padding-right: 100px;
+  padding-left: 100px;
+  gap: 100px;
+}
+
+.left-text {
+  width: 40%;
+}
+.left-text h1 {
+  font-size: 56px;
+  line-height: 64px;
+  color: #142640;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 40px;
+}
+.left-text p {
+  font-size: 18px;
+  line-height: 28px;
+  margin-top: 20px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+}
+
+.left-text .email-filed {
+  margin-top: 60px;
+}
+.email-filed .input {
+  border: none;
+  padding: 10px 20px;
+  height: 58px;
+  width: 60%;
+  margin-right: 30px;
+  outline: none;
+  font-size: 16px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.email-filed .btn {
+  padding: 10px 20px;
+  height: 58px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  background-color: #086cd0;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.email-filed .btn:hover {
+  opacity: 0.8;
+}
+.email-filed .btn:active {
+  opacity: 0.6;
+}
+.email-filed p {
+  color: gray;
+  font-size: 15px;
+}
+.email-filed .google-icon {
+  margin-left: 9px;
+  width: 14px;
+  height: 14px;
+}
+p .sign-up-with-google {
+  color: #086cd0;
+  font-size: 15px;
+}
+.right-figure {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.right-figure img {
+  z-index: 100;
+}
+.right-figure video {
+  position: absolute;
+}
