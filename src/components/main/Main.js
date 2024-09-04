@@ -35,6 +35,28 @@ function Main() {
           </video>
         </div>
       </section>
+      <section>
+        <div className="section-2">
+          <h1>
+            Discover the potential for your business with this software. Sign up
+            for a 7 day free trial and experience the difference.
+          </h1>
+        </div>
+      </section>
+
+      <section className="s-2-hero-page">
+        <div className="s-2-left-text">
+          <h1>Get your free scheduling app now</h1>
+          <p>
+            Step right up and manage all of your bookings through one online
+            appointment scheduler. Seamless automation enables your business to
+            run like clockwork.
+          </p>
+        </div>
+        <div className="s-2-right-figure">
+          <img src="./calendar.webp" alt="" />
+        </div>
+      </section>
     </main>
   );
 }
