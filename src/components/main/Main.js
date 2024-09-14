@@ -57,6 +57,13 @@ function Main() {
           <img src="./calendar.webp" alt="" />
         </div>
       </section>
+      <section className="s-3-feature">
+        <div className="s-3-top-text">
+          <p>Featured Services</p>
+          <h1>Features that you will love</h1>
+        </div>
+        <div className="s-3-feature-list"></div>
+      </section>
     </main>
   );
 }
