@@ -1,6 +1,7 @@
 import React from "react";
 import "./main.css";
 import FeatureCard from "../featureCard/FeatureCard";
+import PaymentCard from "../paymentCard/PaymentCard";
 function Main() {
   return (
     <main>
@@ -37,13 +38,6 @@ function Main() {
         </div>
       </section>
 
-      <section className="section-2">
-        <h1>
-          Discover the potential for your business with this software. Sign up
-          for a 7 day free trial and experience the difference.
-        </h1>
-      </section>
-
       <section className="s-2-hero-page">
         <div className="s-2-left-text">
           <h1>Get your free scheduling app now</h1>
@@ -57,6 +51,12 @@ function Main() {
           <img src="./calendar.webp" alt="" />
         </div>
       </section>
+      <section className="section-2">
+        <h1>
+          Discover the potential for your business with this software. Sign up
+          for a 7 day free trial and experience the difference.
+        </h1>
+      </section>
       <section className="s-3-feature">
         <div className="s-3-top-text">
           <p className="heading">Featured Services</p>
@@ -67,9 +67,34 @@ function Main() {
           </p>
         </div>
         <div className="s-3-feature-list">
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
+          <FeatureCard
+            image={"./perspective_matte-26.png"}
+            detail={"Analytics and Reporting"}
+            description={
+              "Access detailed user-friendly analytics and reporting with a breakdown of your business performance all at your fingertios."
+            }
+          />
+          <FeatureCard
+            image={"./Dimension.png"}
+            detail={"Scalability and Flexibility"}
+            description={
+              "Ketero ensures your business by providing a scalable and easily accessible platform for your entire team. "
+            }
+          />
+          <FeatureCard
+            image={"./perspective_matte.png "}
+            detail={"Support and Maintenance"}
+            description={
+              "Just like our app. We offer 24/7 customer support to assist you anytime you need."
+            }
+          />
+        </div>
+      </section>
+      <section className="s-4-payment">
+        <div className="s-4-payment-wrapper">
+          <PaymentCard />
+          <PaymentCard />
+          <PaymentCard />
         </div>
       </section>
     </main>
