@@ -1,5 +1,6 @@
 import React from "react";
 import "./main.css";
+import FeatureCard from "../featureCard/FeatureCard";
 function Main() {
   return (
     <main>
@@ -35,13 +36,12 @@ function Main() {
           </video>
         </div>
       </section>
-      <section>
-        <div className="section-2">
-          <h1>
-            Discover the potential for your business with this software. Sign up
-            for a 7 day free trial and experience the difference.
-          </h1>
-        </div>
+
+      <section className="section-2">
+        <h1>
+          Discover the potential for your business with this software. Sign up
+          for a 7 day free trial and experience the difference.
+        </h1>
       </section>
 
       <section className="s-2-hero-page">
@@ -59,10 +59,18 @@ function Main() {
       </section>
       <section className="s-3-feature">
         <div className="s-3-top-text">
-          <p>Featured Services</p>
-          <h1>Features that you will love</h1>
+          <p className="heading">Featured Services</p>
+          <h1 className="title">Features that you will love</h1>
+          <p className="description">
+            we allows you to effortlessly book, manage, and track appointments
+            with automated reminders and calendar integrations
+          </p>
         </div>
-        <div className="s-3-feature-list"></div>
+        <div className="s-3-feature-list">
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+        </div>
       </section>
     </main>
   );
