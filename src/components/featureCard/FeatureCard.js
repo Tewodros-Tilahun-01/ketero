@@ -1,19 +1,17 @@
 import React from "react";
-
-function FeatureCard() {
+import "./featureCard.css";
+function FeatureCard(props) {
+  let { image, detail, description } = props;
   return (
-    <>
-      <div>
-        <img src="./logo3.png" alt="" />
+    <div className="featureCard">
+      <div className="featureCard-image">
+        <img src={image} alt="" />
       </div>
-      <div>
-        <h2>Analytics and Reporting</h2>
-        <p>
-          Access detailed user-friendly analytics and reporting with a breakdown
-          of your business performance all at your finger taos.
-        </p>
+      <div className="featureCard-detail">
+        <h2>{detail}</h2>
+        <p>{description}</p>
       </div>
-    </>
+    </div>
   );
 }
 
