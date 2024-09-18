@@ -1,30 +1,28 @@
 import React from "react";
 import "./paymentCard.css";
-function PaymentCard() {
-  let list = [
-    "40 Appointment/month",
-    "Email Notification",
-    "1 Service Type",
-    "1 User",
-    "iOS & Android App",
-  ];
+function PaymentCard(props) {
+  let { list, title, price } = props;
 
   return (
     <div className="wrapper">
       <div className="enter-wrapper">
         <div className="type">
-          <h1>Starter</h1>
+          <h1>{title}</h1>
           <span>Plan</span>
         </div>
         <div className="subscription-container">
           <div className="price">
             <span>ETB</span>
-            <span>999</span>
+            <span>{price}</span>
           </div>
           <div className="sub-plan">
             <span>/ Year</span>
           </div>
         </div>
+      </div>
+      <div className="trial-container">
+        <a href="//">start now</a>
+        <span>7 days free trial</span>
       </div>
       <div className="lists-wrapper">
         <ul className="lists">
@@ -39,10 +37,6 @@ function PaymentCard() {
             );
           })}
         </ul>
-      </div>
-      <div className="trial-container">
-        <a href="//"> start now</a>
-        <span>7 days free trial</span>
       </div>
     </div>
   );

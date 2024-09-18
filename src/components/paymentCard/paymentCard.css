@@ -90,6 +90,9 @@
   border-style: none;
   border-radius: 30px;
 }
+.s-4-payment-wrapper .trial-container a:hover {
+  scale: 0.9;
+}
 .s-4-payment-wrapper .trial-container span {
   margin-top: 12px;
   font-weight: 500;
