@@ -195,7 +195,7 @@ p .sign-up-with-google {
   gap: 40px;
 }
 .s-4-payment {
-  margin-top: 40px;
+  margin-top: 60px;
   background-color: #edf0f2;
   padding: 40px 0;
 }
@@ -209,4 +209,24 @@ p .sign-up-with-google {
   padding-bottom: 20px;
   border-bottom: #edf0f2 solid 2px;
   width: 100%;
+}
+.s-5-faq {
+  text-align: center;
+  background-color: #edf0f2;
+  padding: 0 0 80px 0;
+}
+.s-5-faq .container {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+}
+.s-5-faq .container h2 {
+  color: #142640;
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 64px;
+  margin-bottom: 80px;
+  text-align: center;
+  font-family: "__EuclidCircularSemibold_02f0c0", arial;
 }

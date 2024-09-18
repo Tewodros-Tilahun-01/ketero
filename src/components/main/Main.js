@@ -2,7 +2,49 @@ import React from "react";
 import "./main.css";
 import FeatureCard from "../featureCard/FeatureCard";
 import PaymentCard from "../paymentCard/PaymentCard";
+import FaqCard from "../faqCard/FaqCard";
 function Main() {
+  let list1 = [
+    "40 Appointment/month",
+    "Email Notification",
+    "1 Service Type",
+    "1 User",
+    "iOS & Android App",
+  ];
+  let list2 = [
+    "60 Appointment/Month",
+    "Email Notification",
+    "Remove Brand Watermark",
+    "2 Users",
+    "5 Service Type",
+  ];
+  let list3 = [
+    "Unlimited Appointment/Month",
+    "Unlimited Email Notification",
+    "Unlimited SMS Notification",
+    "Unlimited User",
+    "Remove Brand Watermark",
+    "iOS & Android App",
+  ];
+  let FAQs = [
+    {
+      question: "What’s an online Booking Page?",
+      answer:
+        "A Booking Page showcases your service menu, availability, and prices online. It has a custom URL and can function as a standalone website. Visitors can self-schedule and pay for appointments 24/7 without having to call, email, or travel to your premises.Sign up for your free appointment scheduler and create a Booking Page in minutes.",
+    },
+    {
+      question:
+        "What’s the difference between my ketro calendar and Booking Page?​",
+      answer:
+        "Your calendar is only visible to you and permitted staff members. Add appointments, edit your working hours, and get a real-time view of team schedules. When you update your availability, it reflects on your Booking Page",
+    },
+    {
+      question:
+        "How can I get more customers with free appointment scheduling software?",
+      answer:
+        "Your Booking Page connects to your existing website, Facebook, and Instagram, enabling people to learn about your services and self-schedule appointments 24/7. Every online channel becomes an all-new conversion machine. You can also add your Booking Page URL and QR code to emails, business cards, and promo items, helping to capitalize on interest without any wait times.",
+    },
+  ];
   return (
     <main>
       <section className="hero-page">
@@ -92,9 +134,19 @@ function Main() {
       </section>
       <section className="s-4-payment">
         <div className="s-4-payment-wrapper">
-          <PaymentCard />
-          <PaymentCard />
-          <PaymentCard />
+          <PaymentCard list={list1} price={0} title={"Starter"} />
+          <PaymentCard list={list2} price={999} title={"Basic"} />
+          <PaymentCard list={list3} price={2999} title={"Pro"} />
+        </div>
+      </section>
+      <section className="s-5-faq">
+        <div className="container">
+          <h2>FAQs</h2>
+          <ul className="faq-lists">
+            {FAQs.map((item) => {
+              return <FaqCard item={item} />;
+            })}
+          </ul>
         </div>
       </section>
     </main>
