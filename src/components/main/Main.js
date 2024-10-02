@@ -99,7 +99,7 @@ function Main() {
           for a 7 day free trial and experience the difference.
         </h1>
       </section>
-      <section className="s-3-feature">
+      <section className="s-3-feature" id="features">
         <div className="s-3-top-text">
           <p className="heading">Featured Services</p>
           <h1 className="title">Features that you will love</h1>

@@ -41,6 +41,9 @@
   font-family: "Poppins", Sans-serif;
   line-height: 26px;
 }
+.nav-wrapper .active {
+  color: #086cd0;
+}
 .middle-nav li a:hover::after {
   opacity: 1;
 }

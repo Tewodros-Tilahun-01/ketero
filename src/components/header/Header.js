@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./header.css";
 function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,13 +25,21 @@ function Header() {
         <div className="nav-wrapper">
           <ul className="middle-nav">
             <li>
-              <a href="//">Home</a>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Home
+              </NavLink>
             </li>
+
             <li>
-              <a href="//">Feature</a>
-            </li>
-            <li>
-              <a href="//">Contact Us</a>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Contact Us
+              </NavLink>
             </li>
           </ul>
           <div>

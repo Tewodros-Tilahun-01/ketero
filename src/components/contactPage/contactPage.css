@@ -1,0 +1,93 @@
+.contact-wrapper {
+  margin-top: 70px;
+  height: 100vh;
+}
+.contact-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 48px 100px;
+}
+.contact-page > div {
+  width: calc((100% - 80px) / 2);
+  margin-bottom: 40px;
+}
+.left-side .title h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(78, 139, 189);
+}
+.left-side .title p {
+  margin-top: 8px;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.left-side .inputs {
+  margin-top: 40px;
+}
+.left-side .inputs label {
+  display: block;
+  margin-bottom: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.left-side .inputs input {
+  margin-bottom: 12px;
+  width: 90%;
+  padding: 12px 8px;
+  outline: none;
+  border: rgb(78, 139, 189) solid 2px;
+  border-radius: 8px;
+}
+.left-side .inputs .message {
+  height: 100px;
+}
+.left-side .submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  width: 90%;
+  margin-top: 20px;
+}
+.left-side .submit-btn input {
+  padding: 18px 40px;
+  width: 100%;
+  background-color: rgb(78, 139, 189);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 50px;
+}
+.hero-image {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex: 2;
+}
+.right-side img {
+  height: 100%;
+}
+.contact-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.contact-detail > div {
+  margin-top: 12px;
+}
+.contact-detail label {
+  margin-left: 8px;
+  font-size: 18px;
+}
+.contact-detail span {
+  color: rgb(78, 139, 189);
+}
