@@ -42,10 +42,10 @@ function Header() {
               </NavLink>
             </li>
           </ul>
-          <div>
-            <button className="log-out-btn">Log In</button>
-            <button className="sign-up-btn">Sign Up</button>
-          </div>
+        </div>
+        <div>
+          <button className="log-out-btn">Log In</button>
+          <button className="sign-up-btn">Sign Up</button>
         </div>
       </nav>
     </header>
