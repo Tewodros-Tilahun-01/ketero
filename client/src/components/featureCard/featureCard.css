@@ -1,0 +1,33 @@
+.s-3-feature-list .featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 12px;
+  padding: 0 8px;
+  flex: 1;
+}
+.s-3-feature-list .featureCard-image {
+  width: 120px;
+  height: 120px;
+}
+.featureCard-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.featureCard h2 {
+  color: #1f2933;
+  font-family: "Poppins", Sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+.featureCard p {
+  text-align: left;
+  color: #666666;
+  font-family: "Raleway", Sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 8px;
+  line-height: 24px;
+}

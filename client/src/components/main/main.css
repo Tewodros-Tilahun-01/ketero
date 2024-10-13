@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+.hero-page {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-top: 88px;
+  padding-top: 72px;
+  padding-right: 100px;
+  padding-left: 100px;
+  gap: 100px;
+}
+
+.left-text {
+  width: 40%;
+}
+.left-text h1 {
+  font-size: 56px;
+  line-height: 64px;
+  color: #142640;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 40px;
+}
+.left-text p {
+  font-size: 18px;
+  line-height: 28px;
+  margin-top: 20px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+}
+
+.left-text .email-filed {
+  margin-top: 60px;
+}
+.email-filed .input {
+  border: none;
+  padding: 10px 20px;
+  height: 58px;
+  width: 60%;
+  margin-right: 30px;
+  outline: none;
+  font-size: 16px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.email-filed .btn {
+  padding: 10px 20px;
+  height: 58px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  background-color: #086cd0;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.email-filed .btn:hover {
+  opacity: 0.8;
+}
+.email-filed .btn:active {
+  opacity: 0.6;
+}
+.email-filed p {
+  color: gray;
+  font-size: 15px;
+}
+.email-filed .google-icon {
+  margin-left: 9px;
+  width: 14px;
+  height: 14px;
+}
+p .sign-up-with-google {
+  color: #086cd0;
+  font-size: 15px;
+}
+.right-figure {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.right-figure img {
+  z-index: 100;
+}
+.right-figure video {
+  position: absolute;
+}
+.section-2 {
+  margin-top: 100px;
+  background-color: #086cd0;
+  width: 100%;
+  height: 310px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 5px 130px;
+}
+.section-2::before {
+  content: "";
+  background-image: url("http://localhost:3000/pic-12.jpg");
+  background-position: center center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+.section-2 h1 {
+  color: white;
+  position: relative;
+  font-size: 45px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.s-2-hero-page {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-top: 70px;
+  padding-top: 72px;
+  padding-right: 100px;
+  padding-left: 100px;
+  gap: 100px;
+}
+.s-2-left-text {
+  width: 40%;
+}
+.s-2-left-text h1 {
+  font-size: 56px;
+  line-height: 64px;
+  color: #142640;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+}
+.s-2-left-text p {
+  font-size: 18px;
+  line-height: 28px;
+  margin-top: 20px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+}
+.s-2-right-figure {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.s-2-right-figure img {
+  z-index: 100;
+  width: 100%;
+}
+.s-3-feature {
+  margin-top: 80px;
+  padding: 60px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.s-3-top-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.s-3-top-text .heading {
+  text-align: center;
+  color: #086cd0;
+  font-family: "Poppins", Sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+.s-3-top-text .title {
+  color: #1f2933;
+  font-family: "Poppins", Sans-serif;
+  font-size: 45px;
+  font-weight: 600;
+  text-align: center;
+}
+.s-3-top-text .description {
+  text-align: center;
+  color: #666666;
+  font-family: "Raleway", Sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.s-3-feature-list {
+  margin-top: 40px;
+  display: flex;
+  width: 100%;
+  gap: 40px;
+}
+.s-4-payment {
+  margin-top: 60px;
+  background-color: #edf0f2;
+  padding: 40px 0;
+}
+.s-4-payment-wrapper {
+  margin: 52px 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.s-4-payment-wrapper .enter-wrapper {
+  padding-bottom: 20px;
+  border-bottom: #edf0f2 solid 2px;
+  width: 100%;
+}
+.s-5-faq {
+  text-align: center;
+  background-color: #edf0f2;
+  padding: 0 0 80px 0;
+}
+.s-5-faq .container {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+}
+.s-5-faq .container h2 {
+  color: #142640;
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 64px;
+  margin-bottom: 80px;
+  text-align: center;
+  font-family: "__EuclidCircularSemibold_02f0c0", arial;
+}

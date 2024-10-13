@@ -1,0 +1,10 @@
+.app {
+  /* height: 700vh; */
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* body {
+  transition: 2s;
+} */

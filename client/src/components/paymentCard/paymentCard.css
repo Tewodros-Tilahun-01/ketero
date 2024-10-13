@@ -1,0 +1,101 @@
+.s-4-payment .wrapper {
+  width: calc((100% - 80px) / 3);
+
+  padding: 28px 44px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(48, 58, 71, 0.2),
+    0 1px 3px 0 rgba(48, 58, 71, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.s-4-payment .type {
+  margin: 10px 0;
+  text-align: center;
+}
+.s-4-payment .type h1 {
+  color: #2d2d2d;
+  font-family: "Poppins", Sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.s-4-payment .type span {
+  color: #b2b2b2;
+  font-family: "Poppins", Sans-serif;
+  display: block;
+  margin-top: 8px;
+}
+.s-4-payment .price {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.s-4-payment .price span:last-child {
+  font-size: 64px;
+  font-family: "Poppins", Sans-serif;
+  font-weight: 600;
+  color: #3e3e3e;
+}
+.s-4-payment .price span:first-child {
+  font-family: "Poppins", Sans-serif;
+  font-weight: 600;
+  color: #3e3e3e;
+  font-size: 24px;
+  position: relative;
+  top: 12px;
+}
+.s-4-payment .sub-plan {
+  text-align: center;
+  color: #3e3e3e;
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.s-4-payment-wrapper .lists-wrapper {
+  padding: 24px 0;
+  text-align: left;
+}
+
+.s-4-payment-wrapper .lists li {
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+}
+.s-4-payment-wrapper .lists li span {
+  margin-right: 4px;
+  color: #25bd07;
+  font-weight: 600;
+}
+.s-4-payment-wrapper .trial-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+.s-4-payment-wrapper .trial-container a {
+  background-color: #1a5aff;
+  color: #ffffff;
+  border-color: #ffffff;
+  transition-duration: 0.6s;
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  padding: 10px 70px 11px 70px;
+  border-style: none;
+  border-radius: 30px;
+}
+.s-4-payment-wrapper .trial-container a:hover {
+  scale: 0.9;
+}
+.s-4-payment-wrapper .trial-container span {
+  margin-top: 12px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #b2b2b2;
+}

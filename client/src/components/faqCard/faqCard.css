@@ -1,0 +1,54 @@
+.s-5-faq .faq-lists {
+  width: 100%;
+}
+.faq-lists li {
+  box-shadow: 0 2px 4px 0 rgba(22, 45, 61, 0.2);
+  border-radius: 8px;
+  width: 100%;
+  background-color: white;
+  margin-bottom: 40px;
+}
+
+.faq-lists .question {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  color: #142640;
+  position: relative;
+  padding: 26px 80px 28px 20px;
+  cursor: pointer;
+  text-align: left;
+}
+.faq-lists .answer {
+  font-size: 18px;
+  line-height: 28px;
+  padding: 0 30px 0 20px;
+  display: block;
+  text-align: left;
+  transition: all 0.35s ease-in-out;
+  font-weight: 400;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+.faq-lists .question::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  width: 34px;
+  height: 34px;
+  background-image: url("http://localhost:3000/down-arrow.png");
+  background-position: center;
+  background-size: contain;
+  transition: 0.8s;
+}
+.faq-lists .active .question::after {
+  transform: rotate(180deg) !important;
+}
+.faq-lists .active .answer {
+  height: auto;
+  visibility: visible;
+  padding-bottom: 24px;
+}
