@@ -82,9 +82,13 @@ router.get("/admin-route", isAdmin, (req, res, next) => {
 });
 
 // Visiting this route logs the user out
-router.get("/logout", (req, res, next) => {
-  req.logout();
-  res.redirect("/home");
+router.get("/logout", function (req, res, next) {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("http://localhost:3000");
+  });
 });
 
 router.get("/login-success", (req, res, next) => {
