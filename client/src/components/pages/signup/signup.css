@@ -1,0 +1,114 @@
+.form-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+
+  padding: 20px;
+  border-radius: 10px;
+
+  font-family: "Arial", sans-serif;
+}
+.lg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.logo-signup {
+  width: 100px;
+  height: 100px;
+}
+.logo-signup img {
+  width: 100%;
+  height: 100%;
+}
+.fullname {
+  display: flex;
+  justify-content: space-between;
+}
+.form-title {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #333;
+  margin-top: 20px;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+}
+
+/* Radio Button Group */
+.form-radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.form-radio-label {
+  font-size: 14px;
+  color: #555;
+}
+
+.form-radio-input {
+  margin-right: 5px;
+}
+
+/* Error Text */
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+.logout-link {
+  display: flex;
+  justify-content: center;
+}
+.logout-link h6 {
+  font-size: 14px;
+  color: #555;
+}
+.logout-link span a {
+  color: #007bff;
+  margin-left: 4px;
+  font-size: 14px;
+  text-decoration: underline;
+}

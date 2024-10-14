@@ -18,16 +18,16 @@ router.post(
 );
 
 router.post("/register", (req, res, next) => {
-  const saltHash = genPassword(req.body.pw);
+  const saltHash = genPassword(req.body.password);
 
   const salt = saltHash.salt;
   const hash = saltHash.hash;
 
   const newUser = new User({
-    username: req.body.uname,
+    username: req.body.username,
     hash: hash,
     salt: salt,
-    admin: true,
+    admin: false,
   });
 
   newUser.save().then((user) => {
@@ -49,8 +49,8 @@ router.get("/", isAuth, (req, res, next) => {
 router.get("/login", (req, res, next) => {
   const form =
     '<h1>Login Page</h1><form method="POST" action="/login">\
-    Enter Username:<br><input type="text" name="uname">\
-    <br>Enter Password:<br><input type="password" name="pw">\
+    Enter Username:<br><input type="text" name="username">\
+    <br>Enter Password:<br><input type="password" name="password">\
     <br><br><input type="submit" value="Submit"></form>';
 
   res.send(form);

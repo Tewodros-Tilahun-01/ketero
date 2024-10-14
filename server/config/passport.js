@@ -4,8 +4,8 @@ const User = require("../models/user");
 const validPassword = require("../lib/passwordUtils").validPassword;
 
 const customFields = {
-  usernameField: "uname",
-  passwordField: "pw",
+  usernameField: "username",
+  passwordField: "password",
 };
 
 const verifyCallback = (username, password, done) => {

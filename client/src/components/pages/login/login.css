@@ -1,0 +1,102 @@
+.login-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.login-page .form-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+
+  padding: 20px;
+  border-radius: 10px;
+
+  font-family: "Arial", sans-serif;
+}
+.login-page .lg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.login-page .logo-signup {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+.login-page .logo-signup img {
+  width: 100%;
+  height: 100%;
+}
+
+.login-page .form-title {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #333;
+  margin-top: 0px;
+}
+
+/* Form group */
+.login-page .form-group {
+  margin-bottom: 30px;
+}
+
+.login-page .form-group label {
+  display: block;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.login-page .form-input {
+  width: 100%;
+  padding: 18px;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.login-page .form-input:focus {
+  border-color: #007bff;
+}
+
+/* Error Text */
+.login-page .error-text {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Submit Button */
+.login-page .submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.login-page .submit-button:hover {
+  background-color: #0056b3;
+}
+.login-page .logout-link {
+  display: flex;
+  justify-content: center;
+}
+.login-page .logout-link h6 {
+  font-size: 14px;
+  color: #555;
+}
+.login-page .logout-link span a {
+  color: #007bff;
+  margin-left: 4px;
+  font-size: 14px;
+  text-decoration: underline;
+}
