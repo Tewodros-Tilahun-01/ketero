@@ -1,14 +1,12 @@
 import React from "react";
 import "./contactPage.css";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
+
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 const ContactPage = () => {
   return (
     <div className="contact-wrapper">
-      <Header />
       <div className="contact-page">
         <div className="left-side">
           <div className="title">
@@ -60,7 +58,6 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

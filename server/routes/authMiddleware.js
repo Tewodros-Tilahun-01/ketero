@@ -2,7 +2,7 @@ module.exports.isAuth = (req, res, next) => {
   if (req.isAuthenticated()) {
     next();
   } else {
-    res.redirect("http://localhost:3000");
+    res.redirect("http://localhost:3000/contact");
   }
 };
 

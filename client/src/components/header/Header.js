@@ -44,8 +44,12 @@ function Header() {
           </ul>
         </div>
         <div>
-          <button className="log-out-btn">Log In</button>
-          <button className="sign-up-btn">Sign Up</button>
+          <NavLink className="log-out-btn" to={"/login"}>
+            Log In
+          </NavLink>
+          <NavLink className="sign-up-btn" to={"/signup"}>
+            Sign Up
+          </NavLink>
         </div>
       </nav>
     </header>
