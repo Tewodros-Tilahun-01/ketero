@@ -4,12 +4,15 @@ const MongoStore = require("connect-mongo");
 const { connectDB, mongooseConnection } = require("./config/database");
 const passport = require("passport");
 var routes = require("./routes");
+const cors = require("cors");
 
 require("dotenv").config();
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
 // Connect to MongoDB
 connectDB();
 

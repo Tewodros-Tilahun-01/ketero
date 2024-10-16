@@ -6,6 +6,7 @@ import Login from "./components/pages/login/Login";
 import Signup from "./components/pages/signup/Signup";
 import Homepage from "./components/pages/homePage/HomePage";
 import Layout from "./components/Layout/Layout";
+import SuccessSignup from "./components/pages/successSignup/SuccessSignup";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "/successSignup",
+    element: <SuccessSignup />,
   },
 ]);
 

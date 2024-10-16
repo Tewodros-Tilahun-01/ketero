@@ -8,6 +8,13 @@
 
   font-family: "Arial", sans-serif;
 }
+.message {
+  background-color: #fff;
+  color: #ff0000;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
 .lg {
   width: 100%;
   display: flex;

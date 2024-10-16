@@ -1,27 +1,40 @@
 import React, { useState } from "react";
 import "./login.css"; // Import the CSS file for styling
 import { NavLink } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const Login = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
 
     if (Object.keys(newErrors).length === 0) {
-      console.log(formData);
-      alert("Form submitted successfully!");
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/login",
+          formData
+        );
+        if (response.data.userAuthenticated) {
+          navigate("/");
+        } else {
+          setMessage("Invalid credentials");
+        }
+      } catch (error) {}
     } else {
       setErrors(newErrors);
     }
@@ -50,7 +63,7 @@ const Login = () => {
         <h2 className="form-title">Log in to your Account</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Username</label>
+            <label>Username or Email</label>
             <input
               type="text"
               name="username"
@@ -73,7 +86,7 @@ const Login = () => {
             />
             {errors.password && <p className="error-text">{errors.password}</p>}
           </div>
-
+          <div className="message">{message}</div>
           <button type="submit" className="submit-button">
             Submit
           </button>

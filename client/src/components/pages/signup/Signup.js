@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./signup.css"; // Import the CSS file for styling
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -17,19 +20,26 @@ const Signup = () => {
   });
 
   const [errors, setErrors] = useState({});
-
+  const [message, setMessage] = useState("");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
 
     if (Object.keys(newErrors).length === 0) {
-      console.log(formData);
-      alert("Form submitted successfully!");
+      const response = await axios.post(
+        "http://localhost:5000/signup",
+        formData
+      );
+      if (response.data.userAuthenticated) {
+        navigate("/successSignup");
+      } else {
+        setMessage("Something is wrong");
+      }
     } else {
       setErrors(newErrors);
     }
@@ -41,6 +51,8 @@ const Signup = () => {
     if (!formData.firstName) errors.firstName = "First Name is required";
     if (!formData.lastName) errors.lastName = "Last Name is required";
     if (!formData.username) errors.username = "Username is required";
+    if (formData.password.length <= 5)
+      errors.password = "Password must be more than 5 letter";
     if (!formData.password) errors.password = "Password is required";
     if (!formData.gender) errors.gender = "Gender is required";
     if (!formData.age) errors.age = "Age is required";
@@ -211,10 +223,13 @@ const Signup = () => {
           </div>
           {errors.role && <p className="error-text">{errors.role}</p>}
         </div>
+        <div className="message">{message}</div>
+
         <button type="submit" className="submit-button">
           Submit
         </button>
       </form>
+
       <div className="logout-link">
         <h6>
           Already have an account?

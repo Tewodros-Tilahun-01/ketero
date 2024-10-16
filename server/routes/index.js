@@ -9,70 +9,76 @@ const isAdmin = require("./authMiddleware").isAdmin;
  * -------------- POST ROUTES ----------------
  */
 
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    failureRedirect: "/login-failure",
-    successRedirect: "login-success",
-  })
-);
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return res.json({
+        userAuthenticated: false,
+      });
+    }
+    if (!user) {
+      return res.json({
+        userAuthenticated: false,
+      }); // User not found or invalid
+    }
 
-router.post("/register", (req, res, next) => {
-  const saltHash = genPassword(req.body.password);
+    // Log in the user and create a session
+    req.login(user, (err) => {
+      if (err) {
+        return res.json({
+          userAuthenticated: false,
+        });
+      }
 
-  const salt = saltHash.salt;
-  const hash = saltHash.hash;
-
-  const newUser = new User({
-    username: req.body.username,
-    hash: hash,
-    salt: salt,
-    admin: false,
-  });
-
-  newUser.save().then((user) => {
-    console.log(user);
-  });
-
-  res.redirect("/login");
+      return res.json({ userAuthenticated: true });
+    });
+  })(req, res, next);
 });
 
-/**
- * -------------- GET ROUTES ----------------
- */
+router.post("/signup", (req, res, next) => {
+  const isUserFound = async () => {
+    try {
+      const userExists = await User.findOne({
+        $or: [
+          { username: req.body.username.toLowerCase() },
+          { email: req.body.email.toLowerCase() },
+        ],
+      });
 
-router.get("/", isAuth, (req, res, next) => {
-  res.send('<h1>Home</h1><p>Please <a href="/register">register</a></p>');
+      if (!userExists) {
+        const saltHash = genPassword(req.body.password);
+        const salt = saltHash.salt;
+        const hash = saltHash.hash;
+
+        const newUser = new User({
+          firstName: req.body.firstName.toLowerCase(),
+          lastName: req.body.lastName.toLowerCase(),
+          username: req.body.username.toLowerCase(),
+          hash: hash,
+          salt: salt,
+          age: req.body.age,
+          city: req.body.city,
+          phone: req.body.phone,
+          email: req.body.email.toLowerCase(),
+          role: req.body.role,
+          admin: true,
+        });
+
+        newUser.save().then((user) => {
+          // console.log(user);
+        });
+        res.send({ userAuthenticated: true });
+      } else {
+        res.send({ userAuthenticated: false });
+      }
+    } catch (error) {
+      res.send({ userAuthenticated: false });
+    }
+  };
+
+  isUserFound();
 });
 
-// When you visit http://localhost:3000/login, you will see "Login Page"
-router.get("/login", (req, res, next) => {
-  const form =
-    '<h1>Login Page</h1><form method="POST" action="/login">\
-    Enter Username:<br><input type="text" name="username">\
-    <br>Enter Password:<br><input type="password" name="password">\
-    <br><br><input type="submit" value="Submit"></form>';
-
-  res.send(form);
-});
-
-// When you visit http://localhost:3000/register, you will see "Register Page"
-router.get("/register", (req, res, next) => {
-  const form =
-    '<h1>Register Page</h1><form method="post" action="register">\
-                    Enter Username:<br><input type="text" name="uname">\
-                    <br>Enter Password:<br><input type="password" name="pw">\
-                    <br><br><input type="submit" value="Submit"></form>';
-
-  res.send(form);
-});
-
-/**
- * Lookup how to authenticate users on routes with Local Strategy
- * Google Search: "How to use Express Passport Local Strategy"
- *
- * Also, look up what behaviour express session has without a maxage set
- */
 router.get("/protected-route", isAuth, (req, res, next) => {
   res.send("You made it to the route.");
 });
@@ -89,16 +95,6 @@ router.get("/logout", function (req, res, next) {
     }
     res.redirect("http://localhost:3000");
   });
-});
-
-router.get("/login-success", (req, res, next) => {
-  res.send(
-    '<p>You successfully logged in. --> <a href="/protected-route">Go to protected route</a></p>'
-  );
-});
-
-router.get("/login-failure", (req, res, next) => {
-  res.send("You entered the wrong password.");
 });
 
 module.exports = router;
