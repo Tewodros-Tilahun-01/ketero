@@ -33,7 +33,10 @@ const Signup = () => {
     if (Object.keys(newErrors).length === 0) {
       const response = await axios.post(
         "http://localhost:5000/signup",
-        formData
+        formData,
+        {
+          withCredentials: true, // Enable sending cookies with the request
+        }
       );
       if (response.data.userAuthenticated) {
         navigate("/successSignup");

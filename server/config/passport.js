@@ -15,6 +15,7 @@ const verifyCallback = (username, password, done) => {
       { email: username.toLowerCase() },
     ],
   })
+
     .then((user) => {
       if (!user) {
         return done(null, false);

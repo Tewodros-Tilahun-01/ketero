@@ -27,7 +27,10 @@ const Login = () => {
       try {
         const response = await axios.post(
           "http://localhost:5000/login",
-          formData
+          formData,
+          {
+            withCredentials: true, // Enable sending cookies with the request
+          }
         );
         if (response.data.userAuthenticated) {
           navigate("/");
