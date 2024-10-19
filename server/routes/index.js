@@ -62,6 +62,7 @@ router.post("/signup", (req, res, next) => {
           email: req.body.email.toLowerCase(),
           role: req.body.role,
           admin: true,
+          availability: [],
         });
 
         newUser.save().then((user) => {
@@ -93,7 +94,7 @@ router.get("/logout", function (req, res, next) {
     if (err) {
       return next(err);
     }
-    res.redirect("/");
+    res.send({ userAuthenticated: false });
   });
 });
 
