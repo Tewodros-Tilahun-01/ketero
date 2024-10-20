@@ -30,7 +30,7 @@ router.post("/login", (req, res, next) => {
         });
       }
 
-      return res.json({ userAuthenticated: true });
+      return res.json({ userAuthenticated: true, role: user.role });
     });
   })(req, res, next);
 });

@@ -6,8 +6,9 @@ import Login from "./components/pages/login/Login";
 import Signup from "./components/pages/signup/Signup";
 import Homepage from "./components/pages/homePage/HomePage";
 import Layout from "./components/Layout/Layout";
-import SuccessSignup from "./components/pages/successSignup/SuccessSignup";
+import SignUpSuccess from "./components/pages/signUpSuccess/SignUpSuccess";
 import OfficerDashboard from "./components/pages/officerDashboard/OfficerDashboard";
+import CustomerDashboard from "./components/pages/customerdashboard/CustomerDashboard";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,12 +33,16 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
   {
-    path: "/successSignup",
-    element: <SuccessSignup />,
+    path: "/signUpSuccess",
+    element: <SignUpSuccess />,
   },
   {
     path: "/officerdashboard",
     element: <OfficerDashboard />,
+  },
+  {
+    path: "/customerdashboard",
+    element: <CustomerDashboard />,
   },
 ]);
 
