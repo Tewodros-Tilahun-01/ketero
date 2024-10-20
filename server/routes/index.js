@@ -88,6 +88,70 @@ router.get("/admin-route", isAdmin, (req, res, next) => {
   res.send("You made it to the admin route.");
 });
 
+router.delete("/api/dates/:date", async (req, res) => {
+  const { date } = req.params;
+  try {
+    if (req.user) {
+      console.log(date);
+      await User.findByIdAndUpdate(req.user.id, {
+        $pull: { availability: date },
+        new: true,
+      });
+
+      const updatedDate = await User.findById(req.user.id, {
+        availability: 1,
+        _id: 0,
+      });
+      console.log(updatedDate);
+      return res.json(updatedDate);
+    }
+  } catch (error) {
+    return res.json({ error: "Failed to delete date" });
+  }
+
+  return res.send({});
+});
+
+router.post("/api/dates/:date", async (req, res) => {
+  const { date } = req.params;
+  try {
+    if (req.user) {
+      console.log(date);
+      await User.findByIdAndUpdate(req.user.id, {
+        $push: { availability: date },
+        new: true,
+      });
+
+      const updatedDate = await User.findById(req.user.id, {
+        availability: 1,
+        _id: 0,
+      });
+      console.log(updatedDate);
+      return res.json(updatedDate);
+    }
+  } catch (error) {
+    return res.json({ error: "Failed to delete date" });
+  }
+
+  return res.send({});
+});
+
+router.get("/api/dates", async (req, res) => {
+  try {
+    if (req.user) {
+      const dates = await User.findById(req.user.id, {
+        availability: 1,
+        _id: 0,
+      });
+      return res.json(dates);
+    }
+  } catch (error) {
+    return res.json({ error: "Failed to delete date" });
+  }
+
+  return res.send({});
+});
+
 // Visiting this route logs the user out
 router.get("/logout", function (req, res, next) {
   req.logout((err) => {
