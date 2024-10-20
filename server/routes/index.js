@@ -65,9 +65,7 @@ router.post("/signup", (req, res, next) => {
           availability: [],
         });
 
-        newUser.save().then((user) => {
-          // console.log(user);
-        });
+        newUser.save().then((user) => {});
         res.send({ userAuthenticated: true });
       } else {
         res.send({ userAuthenticated: false });
@@ -92,7 +90,6 @@ router.delete("/api/dates/:date", async (req, res) => {
   const { date } = req.params;
   try {
     if (req.user) {
-      console.log(date);
       await User.findByIdAndUpdate(req.user.id, {
         $pull: { availability: date },
         new: true,
@@ -102,7 +99,7 @@ router.delete("/api/dates/:date", async (req, res) => {
         availability: 1,
         _id: 0,
       });
-      console.log(updatedDate);
+
       return res.json(updatedDate);
     }
   } catch (error) {
@@ -112,13 +109,12 @@ router.delete("/api/dates/:date", async (req, res) => {
   return res.send({});
 });
 
-router.post("/api/dates/:date", async (req, res) => {
-  const { date } = req.params;
+router.post("/api/dates", async (req, res) => {
+  const { date } = req.body;
   try {
     if (req.user) {
-      console.log(date);
       await User.findByIdAndUpdate(req.user.id, {
-        $push: { availability: date },
+        $addToSet: { availability: date },
         new: true,
       });
 
@@ -126,7 +122,6 @@ router.post("/api/dates/:date", async (req, res) => {
         availability: 1,
         _id: 0,
       });
-      console.log(updatedDate);
       return res.json(updatedDate);
     }
   } catch (error) {

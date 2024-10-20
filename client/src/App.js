@@ -7,6 +7,7 @@ import Signup from "./components/pages/signup/Signup";
 import Homepage from "./components/pages/homePage/HomePage";
 import Layout from "./components/Layout/Layout";
 import SuccessSignup from "./components/pages/successSignup/SuccessSignup";
+import OfficerDashboard from "./components/pages/officerDashboard/OfficerDashboard";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/successSignup",
     element: <SuccessSignup />,
+  },
+  {
+    path: "/officerdashboard",
+    element: <OfficerDashboard />,
   },
 ]);
 
