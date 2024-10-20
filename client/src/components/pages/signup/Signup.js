@@ -29,22 +29,25 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
+    setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      const response = await axios.post(
-        "http://localhost:5000/signup",
-        formData,
-        {
-          withCredentials: true, // Enable sending cookies with the request
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/signup",
+          formData,
+          {
+            withCredentials: true, // Enable sending cookies with the request
+          }
+        );
+        if (response.data.userAuthenticated) {
+          navigate("/signUpSuccess");
+        } else {
+          setMessage("Something is wrong");
         }
-      );
-      if (response.data.userAuthenticated) {
-        navigate("/successSignup");
-      } else {
-        setMessage("Something is wrong");
+      } catch (error) {
+        console.error(error);
       }
-    } else {
-      setErrors(newErrors);
     }
   };
 

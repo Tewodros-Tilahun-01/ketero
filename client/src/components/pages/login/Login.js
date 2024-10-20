@@ -22,6 +22,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
+    setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
       try {
@@ -33,13 +34,13 @@ const Login = () => {
           }
         );
         if (response.data.userAuthenticated) {
-          navigate("/");
+          navigate(`/${response.data.role}dashboard`);
         } else {
           setMessage("Invalid credentials");
         }
-      } catch (error) {}
-    } else {
-      setErrors(newErrors);
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
