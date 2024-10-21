@@ -28,12 +28,10 @@ function PaymentCard(props) {
         <ul className="lists">
           {list.map((item) => {
             return (
-              <>
-                <li>
-                  <span class="material-symbols-outlined">check</span>
-                  {item}
-                </li>
-              </>
+              <li key={item}>
+                <span className="material-symbols-outlined">check</span>
+                {item}
+              </li>
             );
           })}
         </ul>

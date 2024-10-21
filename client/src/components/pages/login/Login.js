@@ -3,8 +3,10 @@ import "./login.css"; // Import the CSS file for styling
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Spinner from "../../spinner/Spinner";
 const Login = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -21,10 +23,13 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const newErrors = validateForm();
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
+      setLoading(true);
+
       try {
         const response = await axios.post(
           "http://localhost:5000/login",
@@ -33,13 +38,17 @@ const Login = () => {
             withCredentials: true, // Enable sending cookies with the request
           }
         );
+
         if (response.data.userAuthenticated) {
           navigate(`/${response.data.role}dashboard`);
         } else {
           setMessage("Invalid credentials");
         }
+        setLoading(false);
       } catch (error) {
         console.error(error);
+        setMessage(error.message);
+        setLoading(false);
       }
     }
   };
@@ -92,7 +101,7 @@ const Login = () => {
           </div>
           <div className="message">{message}</div>
           <button type="submit" className="submit-button">
-            Submit
+            {loading ? <Spinner /> : "Submit"}
           </button>
         </form>
         <div className="logout-link">

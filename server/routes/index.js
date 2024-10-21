@@ -86,6 +86,9 @@ router.get("/admin-route", isAdmin, (req, res, next) => {
   res.send("You made it to the admin route.");
 });
 
+router.get("/isauth", isAuth, (req, res, next) => {
+  res.json({ userAuthenticated: true, role: req.user.role });
+});
 router.delete("/api/dates/:date", async (req, res) => {
   const { date } = req.params;
   try {

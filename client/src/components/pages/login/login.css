@@ -71,6 +71,7 @@
 
 /* Submit Button */
 .login-page .submit-button {
+  position: relative;
   width: 100%;
   padding: 12px;
   background-color: #007bff;
@@ -86,6 +87,7 @@
 .login-page .submit-button:hover {
   background-color: #0056b3;
 }
+
 .login-page .logout-link {
   display: flex;
   justify-content: center;

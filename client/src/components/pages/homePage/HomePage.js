@@ -3,6 +3,7 @@ import "./homePage.css";
 import FeatureCard from "../../featureCard/FeatureCard";
 import PaymentCard from "../../paymentCard/PaymentCard";
 import FaqCard from "../../faqCard/FaqCard";
+
 function HomePage() {
   let list1 = [
     "40 Appointment/month",
@@ -45,6 +46,7 @@ function HomePage() {
         "Your Booking Page connects to your existing website, Facebook, and Instagram, enabling people to learn about your services and self-schedule appointments 24/7. Every online channel becomes an all-new conversion machine. You can also add your Booking Page URL and QR code to emails, business cards, and promo items, helping to capitalize on interest without any wait times.",
     },
   ];
+
   return (
     <div className="app">
       <main>
@@ -145,7 +147,7 @@ function HomePage() {
             <h2>FAQs</h2>
             <ul className="faq-lists">
               {FAQs.map((item) => {
-                return <FaqCard item={item} />;
+                return <FaqCard key={item.answer} item={item} />;
               })}
             </ul>
           </div>

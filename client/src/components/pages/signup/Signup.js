@@ -3,9 +3,10 @@ import "./signup.css"; // Import the CSS file for styling
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import Spinner from "../../spinner/Spinner";
 const Signup = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -32,6 +33,8 @@ const Signup = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
+      setLoading(true);
+
       try {
         const response = await axios.post(
           "http://localhost:5000/signup",
@@ -45,7 +48,10 @@ const Signup = () => {
         } else {
           setMessage("Something is wrong");
         }
+        setLoading(false);
       } catch (error) {
+        setMessage(error.message);
+        setLoading(false);
         console.error(error);
       }
     }
@@ -232,7 +238,7 @@ const Signup = () => {
         <div className="message">{message}</div>
 
         <button type="submit" className="submit-button">
-          Submit
+          {loading ? <Spinner /> : "Submit"}
         </button>
       </form>
 
