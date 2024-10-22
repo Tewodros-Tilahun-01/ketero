@@ -54,12 +54,11 @@ function HomePage() {
   const signup = (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log("dd");
-    // const timer = setTimeout(() => {
-    //   setLoading(false);
-    // }, 5000); // 5 seconds loading
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000); // 5 seconds loading
 
-    // return () => clearTimeout(timer);
+    return () => clearTimeout(timer);
   };
 
   return (

@@ -1,0 +1,61 @@
+.userinfo-u {
+  /* height: 60vh; */
+  width: 100%;
+  padding: 10px 20px;
+}
+.logout-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding-right: 20px;
+}
+.logout-btn {
+  padding: 10px 20px;
+  height: 38px;
+  width: 85px;
+  font-size: 16px;
+  color: white;
+  background-color: #086cd0;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  opacity: 0.8;
+}
+.logout-btn:active {
+  opacity: 0.6;
+}
+.userinfo-u .title {
+  font-size: 28px;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  margin-top: 28px;
+}
+.userinfo-u .user-detail {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 68px;
+}
+.user-detail .aberration {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #086cd0;
+  font-size: 22px;
+}
+.user-detail p {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.user-detail p svg {
+  color: #086cd0;
+}

@@ -5,9 +5,17 @@
 }
 ul {
   list-style: none;
-
 }
-a{
+a {
   text-decoration: none;
-  color:white;
+  color: white;
+}
+body {
+  scrollbar-width: none; /* Firefox */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }

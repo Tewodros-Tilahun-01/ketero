@@ -19,7 +19,7 @@ function Layout() {
         });
 
         if (response.data.userAuthenticated) {
-          navigate(`/${response.data.role}dashboard`);
+          navigate(`/${response.data.role}dashboard/availability`);
         }
         setLoading(false);
       } catch (error) {
@@ -29,7 +29,7 @@ function Layout() {
     isAuth();
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 8000); // 7 seconds loading
+    }, 8000); // 8 seconds loading
 
     return () => clearTimeout(timer);
   }, [navigate]);

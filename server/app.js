@@ -34,7 +34,6 @@ app.use(
     }),
     cookie: {
       maxAge: 1000 * 60 * 60 * 24, // Equals 1 day
-      autoRemove: "native",
     },
   })
 );
@@ -44,11 +43,11 @@ require("./config/passport");
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use((req, res, next) => {
-//   console.log(req.session);
-//   console.log(req.user);
-//   next();
-// });
+app.use((req, res, next) => {
+  // console.log(req.session);
+  // console.log(req.user);
+  next();
+});
 
 app.use(routes);
 

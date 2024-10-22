@@ -1,7 +1,7 @@
 import React from "react";
-
+import "./meeting.css";
 function Meeting() {
-  return <div>Meeting</div>;
+  return <div className="meeting"></div>;
 }
 
 export default Meeting;

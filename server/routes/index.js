@@ -81,10 +81,21 @@ router.post("/signup", (req, res, next) => {
   isUserFound();
 });
 
-router.get("/protected-route", isAuth, (req, res, next) => {
-  res.send("You made it to the route.");
+router.get("/user", (req, res, next) => {
+  const findUser = async () => {
+    const response = await User.findById(req.user.id, {
+      hash: 0,
+      salt: 0,
+      availability: 0,
+    });
+    res.send(response);
+  };
+  if (req.user) {
+    findUser();
+  } else {
+    res.send({});
+  }
 });
-
 router.get("/admin-route", isAdmin, (req, res, next) => {
   res.send("You made it to the admin route.");
 });
@@ -154,13 +165,15 @@ router.get("/api/dates", async (req, res) => {
 });
 
 // Visiting this route logs the user out
-router.get("/logout", function (req, res, next) {
+router.get("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) {
       return next(err);
     }
-    res.send({ userAuthenticated: false });
   });
+
+  res.clearCookie("connect.sid");
+  res.send({ userAuthenticated: false });
 });
 
 module.exports = router;

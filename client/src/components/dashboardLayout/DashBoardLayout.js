@@ -2,7 +2,7 @@ import React from "react";
 import "./dashBoardLayout.css";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar";
-import Footer from "../footer/Footer";
+import UserData from "../userData/UserData";
 
 function DashBoardLayout() {
   return (
@@ -11,8 +11,10 @@ function DashBoardLayout() {
         <Sidebar />
       </div>
       <div className="main-section-container">
+        <div className="user-layout">
+          <UserData />
+        </div>
         <Outlet />
-        <Footer />
       </div>
     </div>
   );

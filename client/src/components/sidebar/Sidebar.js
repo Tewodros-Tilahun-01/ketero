@@ -2,6 +2,8 @@ import React from "react";
 import "./sidebar.css";
 import { NavLink } from "react-router-dom";
 
+import { RiCalendarScheduleLine } from "react-icons/ri";
+import { GrSchedule } from "react-icons/gr";
 const Sidebar = () => {
   return (
     <div className="sidebar-container">
@@ -15,7 +17,8 @@ const Sidebar = () => {
               to="availability"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Availability
+              <GrSchedule />
+              <span> Schedule</span>
             </NavLink>
           </li>
           <li>
@@ -23,7 +26,8 @@ const Sidebar = () => {
               to="meeting"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Meeting
+              <RiCalendarScheduleLine />
+              <span>Meeting</span>
             </NavLink>
           </li>
         </ul>
