@@ -46,7 +46,7 @@
 .email-filed .btn {
   padding: 10px 20px;
   height: 58px;
-  text-align: center;
+
   font-size: 16px;
   color: white;
   background-color: #086cd0;
@@ -54,6 +54,7 @@
   border-radius: 3px;
   cursor: pointer;
 }
+
 .email-filed .btn:hover {
   opacity: 0.8;
 }

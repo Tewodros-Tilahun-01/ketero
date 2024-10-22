@@ -46,7 +46,7 @@ const Signup = () => {
         if (response.data.userAuthenticated) {
           navigate("/signUpSuccess");
         } else {
-          setMessage("Something is wrong");
+          setMessage(response.data.message || "Something is wrong");
         }
         setLoading(false);
       } catch (error) {

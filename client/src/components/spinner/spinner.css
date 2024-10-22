@@ -12,7 +12,7 @@
   border-top: 2px solid #fff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-right: 8px;
+  margin-right: 0px;
 }
 
 @keyframes spin {

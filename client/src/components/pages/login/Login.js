@@ -40,7 +40,7 @@ const Login = () => {
         );
 
         if (response.data.userAuthenticated) {
-          navigate(`/${response.data.role}dashboard`);
+          navigate(`/${response.data.role}dashboard/availability`);
         } else {
           setMessage("Invalid credentials");
         }

@@ -68,7 +68,10 @@ router.post("/signup", (req, res, next) => {
         newUser.save().then((user) => {});
         res.send({ userAuthenticated: true });
       } else {
-        res.send({ userAuthenticated: false });
+        res.send({
+          userAuthenticated: false,
+          message: "already has account",
+        });
       }
     } catch (error) {
       res.send({ userAuthenticated: false });

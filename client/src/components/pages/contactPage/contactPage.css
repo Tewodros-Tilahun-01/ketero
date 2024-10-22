@@ -39,6 +39,8 @@
 }
 .left-side .inputs .message {
   height: 100px;
+  text-align: left;
+  color: #000;
 }
 .left-side .submit-btn {
   display: flex;

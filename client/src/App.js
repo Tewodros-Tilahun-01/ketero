@@ -9,6 +9,8 @@ import Layout from "./components/Layout/Layout";
 import SignUpSuccess from "./components/pages/signUpSuccess/SignUpSuccess";
 import OfficerDashboard from "./components/pages/officerDashboard/OfficerDashboard";
 import CustomerDashboard from "./components/pages/customerdashboard/CustomerDashboard";
+import DashBoardLayout from "./components/dashboardLayout/DashBoardLayout";
+import Meeting from "./components/meeting/Meeting";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,11 +40,31 @@ const router = createBrowserRouter([
   },
   {
     path: "/officerdashboard",
-    element: <OfficerDashboard />,
+    element: <DashBoardLayout />,
+    children: [
+      {
+        path: "availability",
+        element: <OfficerDashboard />,
+      },
+      {
+        path: "meeting",
+        element: <Meeting />,
+      },
+    ],
   },
   {
     path: "/customerdashboard",
-    element: <CustomerDashboard />,
+    element: <DashBoardLayout />,
+    children: [
+      {
+        path: "availability",
+        element: <CustomerDashboard />,
+      },
+      {
+        path: "meeting",
+        element: <Meeting />,
+      },
+    ],
   },
 ]);
 

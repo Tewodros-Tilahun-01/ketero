@@ -63,18 +63,6 @@ const OfficerAvailableTime = () => {
 
   return (
     <div className="date-manager">
-      <h1 className="title">Available Dates</h1>
-      <ul className="date-list">
-        {dates.map((date, index) => (
-          <li key={index} className="date-item">
-            {date}
-            <button className="delete-btn" onClick={() => deleteDate(date)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-
       <h2 className="sub-title">Add New Date</h2>
       <div className="date-picker-wrapper">
         <DatePicker
@@ -87,6 +75,17 @@ const OfficerAvailableTime = () => {
           Add Date
         </button>
       </div>
+      <h1 className="title">Available Dates</h1>
+      <ul className="date-list">
+        {dates.map((date, index) => (
+          <li key={index} className="date-item">
+            {date}
+            <button className="delete-btn" onClick={() => deleteDate(date)}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

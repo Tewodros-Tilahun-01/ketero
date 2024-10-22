@@ -9,7 +9,7 @@ function Footer() {
     <footer className="footer">
       <div className="logo-social">
         <div className="logo">
-          <img src="./logo3.png" alt="" />
+          <img src="../logo3.png" alt="" />
         </div>
         <div className="social">
           <a href="http://" target="_blank" rel="noopener noreferrer">

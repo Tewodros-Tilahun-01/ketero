@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./homePage.css";
 import FeatureCard from "../../featureCard/FeatureCard";
 import PaymentCard from "../../paymentCard/PaymentCard";
 import FaqCard from "../../faqCard/FaqCard";
+import Spinner from "../../spinner/Spinner";
 
 function HomePage() {
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+
   let list1 = [
     "40 Appointment/month",
     "Email Notification",
@@ -47,6 +51,17 @@ function HomePage() {
     },
   ];
 
+  const signup = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    console.log("dd");
+    // const timer = setTimeout(() => {
+    //   setLoading(false);
+    // }, 5000); // 5 seconds loading
+
+    // return () => clearTimeout(timer);
+  };
+
   return (
     <div className="app">
       <main>
@@ -57,24 +72,23 @@ function HomePage() {
               Organize your business with 24/7 automated online booking,
               reminders, payments, and more.
             </p>
-            <div className="email-filed">
-              <input
-                type="text"
-                className="input"
-                placeholder="example@gmail.com"
-              />
-              <button className="btn">
-                <span>Start Free</span>
-              </button>
-              <p>
-                or sign up with
-                <a href="//">
-                  <img className="google-icon" src="./google.png" alt="" />
-                  <span className="sign-up-with-google"> Google</span>
-                </a>
-              </p>
-            </div>
+            <form onClick={signup}>
+              <div className="email-filed">
+                <input
+                  type="email"
+                  className="input"
+                  placeholder="example@gmail.com"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <button className="btn">
+                  <span>{loading ? <Spinner /> : "Start Free"}</span>
+                </button>
+              </div>
+            </form>
           </div>
+
           <div className="right-figure">
             <img src="./tablet.webp" alt="" />
             <video autoPlay loop muted preload="auto">
