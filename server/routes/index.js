@@ -4,7 +4,7 @@ const genPassword = require("../lib/passwordUtils").genPassword;
 const User = require("../models/user");
 const isAuth = require("./authMiddleware").isAuth;
 const isAdmin = require("./authMiddleware").isAdmin;
-
+const Schedule = require("../models/Schedule");
 /**
  * -------------- POST ROUTES ----------------
  */
@@ -61,7 +61,7 @@ router.post("/signup", (req, res, next) => {
           phone: req.body.phone,
           email: req.body.email.toLowerCase(),
           role: req.body.role,
-          admin: true,
+          admin: false,
           availability: [],
         });
 
@@ -79,6 +79,37 @@ router.post("/signup", (req, res, next) => {
   };
 
   isUserFound();
+});
+
+router.post("/Schedule", (req, res, next) => {
+  let newSchedule = null;
+  if (req.user && req.user.role === "customer") {
+    newSchedule = new Schedule({
+      officerId: "1235",
+      customerId: req.user.id,
+      eventName: "sbseba",
+      duration: "30min",
+      location: "gonder",
+      date: "20-02-2024",
+    });
+    newSchedule.save();
+  }
+  res.send({});
+});
+
+router.get("/api/schedule", async (req, res) => {
+  try {
+    if (req.user) {
+      const schedule = await Schedule.find({
+        $or: [{ officerId: req.user.id }, { customerId: req.user.id }],
+      });
+      return res.json(schedule);
+    }
+  } catch (error) {
+    return res.json({ error: "Failed to get data" });
+  }
+
+  return res.send({});
 });
 
 router.get("/user", (req, res, next) => {
