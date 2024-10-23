@@ -1,0 +1,20 @@
+.meeting {
+  /* background-color: gray; */
+  flex: 1;
+  padding: 20px 30px;
+}
+.schedule-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min((100% / 2) - 24px, max(280px, calc(100% - 48px) / 3)), 1fr)
+  );
+  gap: 24px;
+}
+.schedule-item {
+  min-height: 226px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 4px;
+}

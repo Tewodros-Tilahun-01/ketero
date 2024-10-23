@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./footer.css";
 import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
 import { FaSquareXTwitter, FaTelegram } from "react-icons/fa6";
 
 function Footer() {
+  const [text, setText] = useState("");
+  const [buttonText, setButtonText] = useState("Subscribe");
+  const subscribe = (e) => {
+    e.preventDefault();
+    setText("");
+    setButtonText("👍");
+    const timer = setTimeout(() => {
+      setButtonText("Subscribe");
+    }, 1000); // 1 seconds loading
+
+    return () => clearTimeout(timer);
+  };
   return (
     <footer className="footer">
       <div className="logo-social">
@@ -47,9 +59,16 @@ function Footer() {
       </div>
       <div className="newsletter">
         <div>
-          <label>Sign Up to our newsletter</label>
-          <input type="text" placeholder="example@gmail.com" />
-          <button>Subscribe</button>
+          <form onSubmit={subscribe}>
+            <label>Sign Up to our newsletter</label>
+            <input
+              type="email"
+              placeholder="example@gmail.com"
+              onChange={(e) => setText(e.target.value)}
+              value={text}
+            />
+            <button>{buttonText}</button>
+          </form>
         </div>
       </div>
     </footer>

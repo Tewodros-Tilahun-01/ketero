@@ -1,0 +1,42 @@
+.schedule-card {
+  padding: 20px;
+  box-shadow: 1px 1px 6px 1px rgb(0 0 0 / 10%);
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.schedule-card h2 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #086cd0;
+  text-transform: capitalize;
+}
+.schedule-card .s-time {
+  margin-bottom: 12px;
+  margin-top: 4px;
+  font-size: 18px;
+  color: rgba(26, 26, 26, 0.61);
+}
+.schedule-card .location {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 4px;
+  font-size: 18px;
+  color: rgba(26, 26, 26, 0.61);
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+.schedule-card .date {
+  position: absolute;
+
+  bottom: 12px;
+  font-size: 16px;
+}

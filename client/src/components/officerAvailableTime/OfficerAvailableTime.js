@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"; // Import DatePicker CSS
-import "./officerAvailableTime.css"; // Import custom CSS for styling
+import "react-datepicker/dist/react-datepicker.css";
+import "./officerAvailableTime.css";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const OfficerAvailableTime = () => {
   const [dates, setDates] = useState([]);
-  const [newDate, setNewDate] = useState(null); // Store selected date as an object
+  const [newDate, setNewDate] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Fetch available dates when component mounts
   useEffect(() => {
     fetchDates();
   }, []);
@@ -19,12 +20,17 @@ const OfficerAvailableTime = () => {
         withCredentials: true, // Enable sending cookies with the request
       });
       setDates(response.data.availability || []);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching dates:", error);
     }
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 8000); // 8 seconds loading
+
+    return () => clearTimeout(timer);
   };
 
-  // Add a new date
   const addDate = async () => {
     try {
       if (newDate) {
@@ -35,11 +41,11 @@ const OfficerAvailableTime = () => {
             date: formattedDate,
           },
           {
-            withCredentials: true, // Enable sending cookies with the request
+            withCredentials: true,
           }
         );
         setDates(response.data.availability || []);
-        setNewDate(null); // Clear selected date
+        setNewDate(null);
       }
     } catch (error) {
       console.error("Error adding date:", error);
@@ -77,14 +83,18 @@ const OfficerAvailableTime = () => {
       </div>
       <h1 className="title">Available Dates</h1>
       <ul className="date-list">
-        {dates.map((date, index) => (
-          <li key={index} className="date-item">
-            {date}
-            <button className="delete-btn" onClick={() => deleteDate(date)}>
-              Delete
-            </button>
-          </li>
-        ))}
+        {!loading ? (
+          dates.map((date, index) => (
+            <li key={index} className="date-item">
+              {date}
+              <button className="delete-btn" onClick={() => deleteDate(date)}>
+                Delete
+              </button>
+            </li>
+          ))
+        ) : (
+          <LoadingPage />
+        )}
       </ul>
     </div>
   );

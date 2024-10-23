@@ -7,9 +7,12 @@ import { GrSchedule } from "react-icons/gr";
 const Sidebar = () => {
   return (
     <div className="sidebar-container">
-      <div className="logo">
-        <img src="../logo3.png" alt=""></img>
-      </div>
+      <NavLink to="/">
+        <div className="logo">
+          <img src="../logo3.png" alt=""></img>
+        </div>
+      </NavLink>
+
       <div className="sidebar">
         <ul className="sidebar-items">
           <li>

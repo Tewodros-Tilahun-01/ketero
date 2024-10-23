@@ -1,5 +1,6 @@
 import React from "react";
 import "./paymentCard.css";
+import { NavLink } from "react-router-dom";
 function PaymentCard(props) {
   let { list, title, price } = props;
 
@@ -21,7 +22,7 @@ function PaymentCard(props) {
         </div>
       </div>
       <div className="trial-container">
-        <a href="//">start now</a>
+        <NavLink to="/signup">start now</NavLink>
         <span>7 days free trial</span>
       </div>
       <div className="lists-wrapper">
