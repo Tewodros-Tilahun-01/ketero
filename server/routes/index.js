@@ -112,6 +112,22 @@ router.get("/api/schedule", async (req, res) => {
   return res.send({});
 });
 
+router.delete("/api/schedule/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (req.user) {
+      await Schedule.findByIdAndDelete(id);
+      const schedule = await Schedule.find({
+        $or: [{ officerId: req.user.id }, { customerId: req.user.id }],
+      });
+      return res.json(schedule);
+    }
+  } catch (error) {
+    return res.json({ error: "Failed to delete schedule" });
+  }
+
+  return res.send({});
+});
 router.get("/user", (req, res, next) => {
   const findUser = async () => {
     const response = await User.findById(req.user.id, {

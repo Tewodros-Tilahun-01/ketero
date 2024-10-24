@@ -36,7 +36,7 @@ function Meeting() {
         <ul className="schedule-list">
           {schedule.map((schedule, index) => (
             <li key={index} className="schedule-item">
-              <ScheduleCard />
+              <ScheduleCard schedule={schedule} setSchedule={setSchedule} />
             </li>
           ))}
         </ul>
