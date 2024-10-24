@@ -4,10 +4,12 @@ import FeatureCard from "../../featureCard/FeatureCard";
 import PaymentCard from "../../paymentCard/PaymentCard";
 import FaqCard from "../../faqCard/FaqCard";
 import Spinner from "../../spinner/Spinner";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   let list1 = [
     "40 Appointment/month",
@@ -57,6 +59,9 @@ function HomePage() {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 5000); // 5 seconds loading
+    if (email) {
+      navigate(`/signup?email=${email}`);
+    }
 
     return () => clearTimeout(timer);
   };
@@ -71,7 +76,7 @@ function HomePage() {
               Organize your business with 24/7 automated online booking,
               reminders, payments, and more.
             </p>
-            <form onClick={signup}>
+            <form onSubmit={signup}>
               <div className="email-filed">
                 <input
                   type="email"

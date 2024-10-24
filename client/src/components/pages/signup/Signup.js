@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./signup.css"; // Import the CSS file for styling
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../spinner/Spinner";
+import { useSearchParams } from "react-router-dom";
 const Signup = () => {
   const navigate = useNavigate();
+  let [searchParams] = useSearchParams();
+  useEffect(() => {
+    const email = searchParams.get("email");
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      email: email,
+    }));
+  }, [searchParams]);
+
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -19,6 +29,8 @@ const Signup = () => {
     email: "",
     role: "",
   });
+
+  // Access query parameters by key
 
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
