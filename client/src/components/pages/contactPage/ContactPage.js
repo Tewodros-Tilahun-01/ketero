@@ -1,10 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./contactPage.css";
 
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import Spinner from "../../spinner/Spinner";
 const ContactPage = () => {
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setFormData({ name: "", email: "", message: "" });
+    }, 3000); // 8 seconds loading
+    return () => clearTimeout(timer);
+  };
+
   return (
     <div className="contact-wrapper">
       <div className="contact-page">
@@ -13,23 +35,43 @@ const ContactPage = () => {
             <h1>Get in touch</h1>
             <p>we are here for you! How can we help?</p>
           </div>
-          <div className="inputs">
-            <div>
-              <label>Name</label>
-              <input type="text" className="name" />
+          <form onSubmit={handleSubmit}>
+            <div className="inputs">
+              <div>
+                <label>Name</label>
+                <input
+                  type="text"
+                  className="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label>Email</label>
+                <input
+                  type="email"
+                  className="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label>Message</label>
+                <input
+                  type="text"
+                  className="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-            <div>
-              <label>Email</label>
-              <input type="text" className="email" />
+            <div className="submit-btn">
+              <button>{loading ? <Spinner /> : "Submit"}</button>
             </div>
-            <div>
-              <label>Message</label>
-              <input type="text" className="message" />
-            </div>
-          </div>
-          <div className="submit-btn">
-            <input type="submit" />
-          </div>
+          </form>
         </div>
         <div className="right-side">
           <div className="hero-image">
