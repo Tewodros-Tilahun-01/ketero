@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://ketero-v1.vercel.app/", // Specify your frontend domain
+    origin: "https://ketero-v1.vercel.app", // Specify your frontend domain
     credentials: true, // Enable sending cookies from the browser
   })
 );
