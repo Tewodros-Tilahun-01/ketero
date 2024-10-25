@@ -193,6 +193,8 @@ router.get("/user", (req, res, next) => {
       salt: 0,
       availability: 0,
     });
+    console.log(response);
+    console.log(req.user.id);
     res.send(response);
   };
   if (req.user) {
