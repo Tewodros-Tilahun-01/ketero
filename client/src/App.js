@@ -72,7 +72,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <div>Welcome back</div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
