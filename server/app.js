@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://localhost:3000", // Specify your frontend domain
+    origin: "https://ketero2.netlify.app/", // Specify your frontend domain
     credentials: true, // Enable sending cookies from the browser
   })
 );
