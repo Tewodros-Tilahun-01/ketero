@@ -18,6 +18,7 @@ function ScheduleCard({ schedule, setSchedule }) {
       setSchedule(response.data || []);
       setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error("Error deleting date:", error);
     }
     const timer = setTimeout(() => {

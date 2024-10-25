@@ -19,9 +19,12 @@ function Header() {
   return (
     <header className={`header  ${scrolled ? "scrolled" : undefined} `}>
       <nav className="app-header">
-        <div className="logo">
-          <img src="./logo3.png" alt=""></img>
-        </div>
+        <NavLink>
+          <div className="logo">
+            <img src="./logo3.png" alt=""></img>
+          </div>
+        </NavLink>
+
         <div className="nav-wrapper">
           <ul className="middle-nav">
             <li>

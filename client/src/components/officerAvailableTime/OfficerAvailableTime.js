@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./officerAvailableTime.css";
 import LoadingPage from "../loadingPage/LoadingPage";
+import DataNotFound from "../dataNotFound/DataNotFound";
 
 const OfficerAvailableTime = () => {
   const [dates, setDates] = useState([]);
@@ -22,6 +23,8 @@ const OfficerAvailableTime = () => {
       setDates(response.data.availability || []);
       setLoading(false);
     } catch (error) {
+      setLoading(false);
+
       console.error("Error fetching dates:", error);
     }
     const timer = setTimeout(() => {
@@ -83,7 +86,9 @@ const OfficerAvailableTime = () => {
       </div>
       <h1 className="title">Available Dates</h1>
       <ul className="date-list">
-        {!loading ? (
+        {loading ? (
+          <LoadingPage />
+        ) : dates && dates.length > 0 ? (
           dates.map((date, index) => (
             <li key={index} className="date-item">
               {date}
@@ -93,7 +98,7 @@ const OfficerAvailableTime = () => {
             </li>
           ))
         ) : (
-          <LoadingPage />
+          <DataNotFound data={"select date"} />
         )}
       </ul>
     </div>

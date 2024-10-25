@@ -25,6 +25,7 @@ function Meeting() {
       setSchedule(response.data || []);
       setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error("Error fetching schedule:", error);
     }
   };

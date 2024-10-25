@@ -11,6 +11,8 @@ import OfficerDashboard from "./components/pages/officerDashboard/OfficerDashboa
 import CustomerDashboard from "./components/pages/customerdashboard/CustomerDashboard";
 import DashBoardLayout from "./components/dashboardLayout/DashBoardLayout";
 import Meeting from "./components/meeting/Meeting";
+import Schedule from "./components/schedule/Schedule";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,6 +66,7 @@ const router = createBrowserRouter([
         path: "meeting",
         element: <Meeting />,
       },
+      { path: "user/:id", element: <Schedule /> },
     ],
   },
 ]);

@@ -1,0 +1,58 @@
+.schedule {
+  min-width: 300px;
+  max-width: 700px;
+  padding-left: 40px;
+}
+.schedule .title h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(78, 139, 189);
+}
+.schedule .title p {
+  margin-top: 8px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.schedule .inputs {
+  margin-top: 40px;
+}
+.schedule .inputs div {
+  margin-bottom: 8px;
+}
+.schedule .inputs label {
+  display: block;
+  margin-bottom: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.schedule .inputs input {
+  margin-bottom: 4px;
+  width: 90%;
+  padding: 12px 8px;
+  outline: none;
+  border: #d4d3c7 solid 2px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.schedule .submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  width: 90%;
+  margin-top: 20px;
+}
+.schedule .submit-btn button {
+  padding: 18px 40px;
+  width: 100%;
+  background-color: rgb(78, 139, 189);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+.schedule .error-text {
+  color: red;
+  font-size: 12px;
+}

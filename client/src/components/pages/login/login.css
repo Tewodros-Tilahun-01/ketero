@@ -62,14 +62,12 @@
   border-color: #007bff;
 }
 
-/* Error Text */
 .login-page .error-text {
   color: red;
   font-size: 12px;
   margin-top: 5px;
 }
 
-/* Submit Button */
 .login-page .submit-button {
   position: relative;
   width: 100%;

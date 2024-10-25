@@ -9,7 +9,7 @@ const Sidebar = () => {
     <div className="sidebar-container">
       <NavLink to="/">
         <div className="logo">
-          <img src="../logo3.png" alt=""></img>
+          <img src="../../logo3.png" alt=""></img>
         </div>
       </NavLink>
 

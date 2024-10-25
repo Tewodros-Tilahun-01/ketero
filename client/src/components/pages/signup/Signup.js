@@ -10,10 +10,12 @@ const Signup = () => {
   let [searchParams] = useSearchParams();
   useEffect(() => {
     const email = searchParams.get("email");
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      email: email,
-    }));
+    if (email) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        email: email,
+      }));
+    }
   }, [searchParams]);
 
   const [loading, setLoading] = useState(false);
@@ -208,6 +210,7 @@ const Signup = () => {
         </div>
         <div className="form-group">
           <label>Email</label>
+
           <input
             type="email"
             name="email"

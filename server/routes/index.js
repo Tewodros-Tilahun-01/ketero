@@ -81,20 +81,28 @@ router.post("/signup", (req, res, next) => {
   isUserFound();
 });
 
-router.post("/Schedule", (req, res, next) => {
-  let newSchedule = null;
+router.post("/api/:officerId/Schedule", async (req, res, next) => {
+  const { officerId } = req.params;
   if (req.user && req.user.role === "customer") {
-    newSchedule = new Schedule({
-      officerId: "1235",
-      customerId: req.user.id,
-      eventName: "sbseba",
-      duration: "30min",
-      location: "gonder",
-      date: "20-02-2024",
-    });
-    newSchedule.save();
+    try {
+      await User.findByIdAndUpdate(officerId, {
+        $pull: { availability: req.body.date },
+        new: true,
+      });
+      const newSchedule = new Schedule({
+        officerId: officerId,
+        customerId: req.user.id,
+        eventName: req.body.eventName,
+        duration: req.body.duration,
+        location: req.body.location,
+        date: req.body.date,
+      });
+      newSchedule.save();
+    } catch (error) {
+      res.send({ states: false });
+    }
   }
-  res.send({});
+  res.send({ states: true });
 });
 
 router.get("/api/schedule", async (req, res) => {
@@ -116,6 +124,11 @@ router.delete("/api/schedule/:id", async (req, res) => {
   const { id } = req.params;
   try {
     if (req.user) {
+      const response = await Schedule.findById(id);
+      await User.findByIdAndUpdate(response.officerId, {
+        $addToSet: { availability: response.date },
+        new: true,
+      });
       await Schedule.findByIdAndDelete(id);
       const schedule = await Schedule.find({
         $or: [{ officerId: req.user.id }, { customerId: req.user.id }],
@@ -123,11 +136,56 @@ router.delete("/api/schedule/:id", async (req, res) => {
       return res.json(schedule);
     }
   } catch (error) {
-    return res.json({ error: "Failed to delete schedule" });
+    return res.json({ error: "Failed  load delete " });
   }
 
   return res.send({});
 });
+router.get("/api/officerDate/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (req.user) {
+      const dates = await User.findById(id, {
+        availability: 1,
+        _id: 0,
+      });
+
+      return res.json(dates);
+    }
+  } catch (error) {
+    return res.json({ error: "Failed to delete date" });
+  }
+
+  return res.send({});
+});
+router.get("/api/officers", (req, res, next) => {
+  const findUser = async () => {
+    const response = await User.find(
+      { role: "officer" },
+      {
+        hash: 0,
+        salt: 0,
+        __v: 0,
+        admin: 0,
+        role: 0,
+        phone: 0,
+        age: 0,
+        email: 0,
+        phone: 0,
+      }
+    );
+    let officerHasTime = response.filter((officer) => {
+      return officer.availability.length > 0;
+    });
+    res.send(officerHasTime);
+  };
+  if (req.user) {
+    findUser();
+  } else {
+    res.send({});
+  }
+});
+
 router.get("/user", (req, res, next) => {
   const findUser = async () => {
     const response = await User.findById(req.user.id, {

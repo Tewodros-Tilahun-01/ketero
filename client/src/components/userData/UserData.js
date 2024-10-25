@@ -50,7 +50,7 @@ function UserData() {
           {loading ? <Spinner /> : "Logout"}
         </button>
       </div>
-      <div className="title"> Availability</div>
+      <div className="title"> Welcome {user.firstName}</div>
       <div className="user-detail">
         <span className="aberration">
           {user.firstName && user.firstName.charAt(0).toUpperCase()}
