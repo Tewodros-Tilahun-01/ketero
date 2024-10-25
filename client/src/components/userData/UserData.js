@@ -19,7 +19,7 @@ function UserData() {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/user", {
+      const res = await axios.get(`https://ketero.onrender.com/user`, {
         withCredentials: true, // Enable sending cookies with the request
       });
       setUser(res.data);
@@ -30,7 +30,7 @@ function UserData() {
   const logout = async () => {
     try {
       setLoading(true);
-      await axios.get("http://localhost:5000/logout", {
+      await axios.get(`https://ketero.onrender.com/logout`, {
         withCredentials: true, // Enable sending cookies with the request
       });
       navigate("/");

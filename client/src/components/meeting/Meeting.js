@@ -19,9 +19,12 @@ function Meeting() {
 
   const fetchSchedule = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/schedule", {
-        withCredentials: true, // Enable sending cookies with the request
-      });
+      const response = await axios.get(
+        `https://ketero.onrender.com/api/schedule`,
+        {
+          withCredentials: true, // Enable sending cookies with the request
+        }
+      );
       setSchedule(response.data || []);
       setLoading(false);
     } catch (error) {

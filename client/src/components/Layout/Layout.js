@@ -15,7 +15,7 @@ function Layout() {
   useEffect(() => {
     const isAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/isauth", {
+        const response = await axios.get(`https://ketero.onrender.com/isauth`, {
           withCredentials: true, // Enable sending cookies with the request
         });
 

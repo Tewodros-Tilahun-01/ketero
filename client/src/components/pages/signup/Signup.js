@@ -51,7 +51,7 @@ const Signup = () => {
 
       try {
         const response = await axios.post(
-          "http://localhost:5000/signup",
+          `https://ketero.onrender.com/signup`,
           formData,
           {
             withCredentials: true, // Enable sending cookies with the request

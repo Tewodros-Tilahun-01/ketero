@@ -17,9 +17,12 @@ const OfficerAvailableTime = () => {
 
   const fetchDates = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/dates", {
-        withCredentials: true, // Enable sending cookies with the request
-      });
+      const response = await axios.get(
+        `https://ketero.onrender.com/api/dates`,
+        {
+          withCredentials: true, // Enable sending cookies with the request
+        }
+      );
       setDates(response.data.availability || []);
       setLoading(false);
     } catch (error) {
@@ -43,7 +46,7 @@ const OfficerAvailableTime = () => {
       if (newDate) {
         const formattedDate = toLocalISOString(newDate).split("T")[0]; // Format date to YYYY-MM-DD
         const response = await axios.post(
-          "http://localhost:5000/api/dates",
+          `https://ketero.onrender.com/api/dates`,
           {
             date: formattedDate,
           },
@@ -63,7 +66,7 @@ const OfficerAvailableTime = () => {
   const deleteDate = async (date) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/dates/${date}`,
+        `https://ketero.onrender.com/api/dates/${date}`,
         {
           withCredentials: true, // Enable sending cookies with the request
         }

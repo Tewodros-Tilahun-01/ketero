@@ -13,9 +13,12 @@ function CustomerDashboard() {
 
   const fetchDates = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/officers", {
-        withCredentials: true, // Enable sending cookies with the request
-      });
+      const response = await axios.get(
+        `https://ketero.onrender.com/api/officers`,
+        {
+          withCredentials: true, // Enable sending cookies with the request
+        }
+      );
       setOfficers(response.data || []);
       setLoading(false);
     } catch (error) {

@@ -42,7 +42,7 @@ function Schedule() {
     const getDate = async (id) => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/officerDate/${id}`,
+          `https://ketero.onrender.com/api/officerDate/${id}`,
           {
             withCredentials: true, // Enable sending cookies with the request
           }
@@ -65,9 +65,13 @@ function Schedule() {
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
-        await axios.post(`http://localhost:5000/api/${id}/schedule`, formData, {
-          withCredentials: true, // Enable sending cookies with the request
-        });
+        await axios.post(
+          `https://ketero.onrender.com/api/${id}/schedule`,
+          formData,
+          {
+            withCredentials: true, // Enable sending cookies with the request
+          }
+        );
         navigate("/customerdashboard/meeting");
 
         setLoading(false);

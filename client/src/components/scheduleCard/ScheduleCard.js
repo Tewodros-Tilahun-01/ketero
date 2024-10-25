@@ -10,7 +10,7 @@ function ScheduleCard({ schedule, setSchedule }) {
     try {
       setLoading(true);
       const response = await axios.delete(
-        `http://localhost:5000/api/schedule/${id}`,
+        `https://ketero.onrender.com/api/schedule/${id}`,
         {
           withCredentials: true, // Enable sending cookies with the request
         }

@@ -34,12 +34,11 @@
   visibility: hidden;
 }
 .faq-lists .question::after {
-  content: "";
+  content: "⬇️";
   position: absolute;
   right: 20px;
   width: 34px;
   height: 34px;
-  background-image: url("http://localhost:3000/down-arrow.png");
   background-position: center;
   background-size: contain;
   transition: 0.8s;
