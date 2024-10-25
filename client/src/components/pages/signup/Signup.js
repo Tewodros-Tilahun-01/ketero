@@ -82,6 +82,7 @@ const Signup = () => {
     if (!formData.password) errors.password = "Password is required";
     if (!formData.gender) errors.gender = "Gender is required";
     if (!formData.age) errors.age = "Age is required";
+    if (Number(formData.age) < 1) errors.age = "Age is not valid";
     if (!formData.city) errors.city = "City is required";
 
     if (formData.phone.length !== 10)

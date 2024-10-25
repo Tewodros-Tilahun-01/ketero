@@ -44,23 +44,25 @@ function CustomerDashboard() {
           <h4>Location</h4>
           <div></div>
           <div></div>
-          {officers.map((officer, index) => (
-            <React.Fragment key={index}>
-              <p key={index}>{officer.firstName}</p>
+          {officers &&
+            officers.length > 0 &&
+            officers.map((officer, index) => (
+              <React.Fragment key={index}>
+                <p key={index}>{officer.firstName}</p>
 
-              <p>{officer.lastName}</p>
-              <p>{officer.city}</p>
-              <div></div>
-              <div>
-                <button
-                  className="add-btn"
-                  onClick={() => addOfficer(officer._id)}
-                >
-                  Add schedule
-                </button>
-              </div>
-            </React.Fragment>
-          ))}
+                <p>{officer.lastName}</p>
+                <p>{officer.city}</p>
+                <div></div>
+                <div>
+                  <button
+                    className="add-btn"
+                    onClick={() => addOfficer(officer._id)}
+                  >
+                    Add schedule
+                  </button>
+                </div>
+              </React.Fragment>
+            ))}
         </div>
       ) : (
         <LoadingPage />

@@ -33,7 +33,7 @@ function Meeting() {
     <div className="meeting">
       {loading ? (
         <LoadingPage />
-      ) : schedule && schedule.length !== 0 ? (
+      ) : schedule && schedule.length > 0 ? (
         <ul className="schedule-list">
           {schedule.map((schedule, index) => (
             <li key={index} className="schedule-item">
