@@ -33,11 +33,15 @@ const OfficerAvailableTime = () => {
 
     return () => clearTimeout(timer);
   };
-
+  function toLocalISOString(date) {
+    const offset = date.getTimezoneOffset() * 60000;
+    const localDate = new Date(date - offset);
+    return localDate.toISOString().slice(0, -1);
+  }
   const addDate = async () => {
     try {
       if (newDate) {
-        const formattedDate = newDate.toISOString().split("T")[0]; // Format date to YYYY-MM-DD
+        const formattedDate = toLocalISOString(newDate).split("T")[0]; // Format date to YYYY-MM-DD
         const response = await axios.post(
           "http://localhost:5000/api/dates",
           {
