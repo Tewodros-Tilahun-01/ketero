@@ -53,5 +53,5 @@ app.use(routes);
 
 port = process.env.PORT || 4000;
 app.listen(port, () => {
-  console.log("Server is running on port 5000");
+  console.log(`Server is running on port ${port}`);
 });

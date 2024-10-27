@@ -5,6 +5,7 @@ const User = require("../models/user");
 const isAuth = require("./authMiddleware").isAuth;
 const isAdmin = require("./authMiddleware").isAdmin;
 const Schedule = require("../models/Schedule");
+const sendEmail = require("../config/mail");
 /**
  * -------------- POST ROUTES ----------------
  */
@@ -85,19 +86,27 @@ router.post("/api/:officerId/Schedule", async (req, res, next) => {
   const { officerId } = req.params;
   if (req.user && req.user.role === "customer") {
     try {
-      await User.findByIdAndUpdate(officerId, {
+      const { customerId, eventName, duration, location, date } = req.body;
+      const officer = await User.findByIdAndUpdate(officerId, {
         $pull: { availability: req.body.date },
         new: true,
       });
+
       const newSchedule = new Schedule({
         officerId: officerId,
         customerId: req.user.id,
-        eventName: req.body.eventName,
-        duration: req.body.duration,
-        location: req.body.location,
-        date: req.body.date,
+        eventName: eventName,
+        duration: duration,
+        location: location,
+        date: date,
       });
       newSchedule.save();
+
+      sendEmail(
+        officer.email,
+        "Your Appointment is Scheduled!",
+        `Hello ${officer.firstName} ${officer.lastName}, \n\nWe are pleased to inform you that your appointment has been successfully scheduled.\n\nAppointment Details: \n Date: ${date} \n duration: ${duration} \n location: ${location} \n\nIf you need to make any changes, feel free to contact us at ketero321@gmail.com \n\nThank you for choosing us, and we look forward to seeing you! \n\nBest regards, \nketero \nketero321@gmail.com`
+      );
     } catch (error) {
       res.send({ states: false });
     }
@@ -125,14 +134,28 @@ router.delete("/api/schedule/:id", async (req, res) => {
   try {
     if (req.user) {
       const response = await Schedule.findById(id);
-      await User.findByIdAndUpdate(response.officerId, {
+      const officer = await User.findByIdAndUpdate(response.officerId, {
         $addToSet: { availability: response.date },
         new: true,
       });
-      await Schedule.findByIdAndDelete(id);
+      const customer = await User.findByIdAndUpdate(response.customerId);
+
+      const deletedSchedule = await Schedule.findByIdAndDelete(id);
       const schedule = await Schedule.find({
         $or: [{ officerId: req.user.id }, { customerId: req.user.id }],
       });
+
+      sendEmail(
+        officer.email,
+        "Your Appointment has been Canceled",
+        `Hello ${officer.firstName} ${officer.lastName} \n\n\nWe regret to inform you that your upcoming appointment scheduled for ${deletedSchedule.date} has been canceled. We apologize for any inconvenience this may cause and appreciate your understanding. \n\n If you would like to reschedule, please contact us at ketero321@gmail.com or visit our scheduling page at ketero.com. \n\n\n Thank you for your patience, and we look forward to assisting you. \n\n\n Sincerely, \n ketero \n ketero321@gmail.com`
+      );
+      sendEmail(
+        customer.email,
+        "Your Appointment has been Canceled",
+        `Hello ${customer.firstName} ${customer.lastName} \n\n\nWe regret to inform you that your upcoming appointment scheduled for ${deletedSchedule.date} has been canceled. We apologize for any inconvenience this may cause and appreciate your understanding. \n\n If you would like to reschedule, please contact us at ketero321@gmail.com or visit our scheduling page at ketero.com. \n\n\n Thank you for your patience, and we look forward to assisting you. \n\n\n Sincerely, \n ketero \n ketero321@gmail.com`
+      );
+
       return res.json(schedule);
     }
   } catch (error) {
