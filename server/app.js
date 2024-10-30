@@ -20,6 +20,7 @@ app.use(
 
 // Connect to MongoDB
 connectDB();
+app.set("trust proxy", 1);
 
 // Set up session middleware
 app.use(
