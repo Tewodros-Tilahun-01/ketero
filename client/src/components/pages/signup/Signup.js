@@ -24,7 +24,7 @@ const Signup = () => {
     lastName: "",
     username: "",
     password: "",
-    gender: "",
+    confirmPassword: "",
     age: "",
     city: "",
     phone: "",
@@ -80,7 +80,8 @@ const Signup = () => {
     if (formData.password.length <= 5)
       errors.password = "Password must be more than 5 letter";
     if (!formData.password) errors.password = "Password is required";
-    if (!formData.gender) errors.gender = "Gender is required";
+    if (formData.password !== formData.confirmPassword)
+      errors.confirmPassword = "password is not the same";
     if (!formData.age) errors.age = "Age is required";
     if (Number(formData.age) < 1) errors.age = "Age is not valid";
     if (!formData.city) errors.city = "City is required";
@@ -106,7 +107,7 @@ const Signup = () => {
 
       <h2 className="form-title">Register here</h2>
       <form onSubmit={handleSubmit}>
-        <div className="fullname">
+        <div className="group-container">
           <div className="form-group">
             <label>First Name</label>
             <input
@@ -147,81 +148,89 @@ const Signup = () => {
           />
           {errors.username && <p className="error-text">{errors.username}</p>}
         </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-            className="form-input"
-          />
-          {errors.password && <p className="error-text">{errors.password}</p>}
+        <div className="group-container">
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+              className="form-input"
+            />
+            {errors.password && <p className="error-text">{errors.password}</p>}
+          </div>
+          <div className="form-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="confirm password"
+              className="form-input"
+            />
+            {errors.confirmPassword && (
+              <p className="error-text">{errors.confirmPassword}</p>
+            )}
+          </div>
         </div>
-        <div className="form-group">
-          <label>Gender</label>
-          <select
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            className="form-input"
-          >
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-          {errors.gender && <p className="error-text">{errors.gender}</p>}
-        </div>
-        <div className="form-group">
-          <label>Age</label>
-          <input
-            type="number"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-            placeholder="Age"
-            className="form-input"
-          />
-          {errors.age && <p className="error-text">{errors.age}</p>}
-        </div>
-        <div className="form-group">
-          <label>City</label>
-          <input
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            placeholder="City"
-            className="form-input"
-          />
-          {errors.city && <p className="error-text">{errors.city}</p>}
-        </div>
-        <div className="form-group">
-          <label>Phone</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="0911223344"
-            className="form-input"
-          />
-          {errors.phone && <p className="error-text">{errors.phone}</p>}
-        </div>
-        <div className="form-group">
-          <label>Email</label>
 
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-            className="form-input"
-          />
-          {errors.email && <p className="error-text">{errors.email}</p>}
+        <div className="group-container">
+          <div className="form-group">
+            <label>City</label>
+            <input
+              type="text"
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+              placeholder="City"
+              className="form-input"
+            />
+            {errors.city && <p className="error-text">{errors.city}</p>}
+          </div>
+          <div className="form-group">
+            <label>Age</label>
+            <input
+              type="number"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
+              placeholder="Age"
+              className="form-input"
+            />
+            {errors.age && <p className="error-text">{errors.age}</p>}
+          </div>
         </div>
+        <div className="group-container">
+          <div className="form-group">
+            <label>Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="0911223344"
+              className="form-input"
+            />
+            {errors.phone && <p className="error-text">{errors.phone}</p>}
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+              className="form-input"
+            />
+            {errors.email && <p className="error-text">{errors.email}</p>}
+          </div>
+        </div>
+
         <div className="form-group">
           <label>Role</label>
           <div className="form-radio-group">

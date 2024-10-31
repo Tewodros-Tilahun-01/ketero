@@ -57,7 +57,6 @@ router.post("/signup", (req, res, next) => {
           username: req.body.username.toLowerCase(),
           hash: hash,
           salt: salt,
-          age: req.body.age,
           city: req.body.city,
           phone: req.body.phone,
           email: req.body.email.toLowerCase(),
@@ -192,7 +191,6 @@ router.get("/api/officers", (req, res, next) => {
         admin: 0,
         role: 0,
         phone: 0,
-        age: 0,
         email: 0,
         phone: 0,
       }
