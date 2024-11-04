@@ -19,6 +19,7 @@ function Schedule() {
     duration: "",
     location: "",
     date: "",
+    time: "",
   });
 
   const handleChange = (e) => {
@@ -33,6 +34,7 @@ function Schedule() {
 
     if (!formData.eventName) errors.eventName = "event name is required";
     if (!formData.duration) errors.duration = "duration is required";
+    if (!formData.time) errors.time = "time is required";
     if (!formData.location) errors.location = "location is required";
     if (!formData.date) errors.date = "date is required";
 
@@ -92,7 +94,7 @@ function Schedule() {
       <form onSubmit={handleSubmit}>
         <div className="inputs">
           <div>
-            <label>Event Name</label>
+            <label>Event</label>
             <input
               type="text"
               className="eventName"
@@ -115,6 +117,19 @@ function Schedule() {
               onChange={handleChange}
             />
             {errors.duration && <p className="error-text">{errors.duration}</p>}
+          </div>
+          <div>
+            <label>appointment time</label>
+            <input
+              type="text"
+              className="Duration"
+              name="time"
+              min={1}
+              value={formData.time}
+              onChange={handleChange}
+              placeholder="8:00 local time"
+            />
+            {errors.time && <p className="error-text">{errors.time}</p>}
           </div>
           <div>
             <label>Location</label>

@@ -86,7 +86,7 @@ router.post("/api/:officerId/Schedule", async (req, res, next) => {
   const { officerId } = req.params;
 
   try {
-    const { eventName, duration, location, date } = req.body;
+    const { eventName, duration, location, date, time } = req.body;
 
     const user = await User.findOne(
       { _id: officerId, "availability.day": date },
@@ -101,7 +101,7 @@ router.post("/api/:officerId/Schedule", async (req, res, next) => {
       new: true,
     });
     if (updatedTime >= 0) {
-      let ews = await User.findOneAndUpdate(
+      await User.findOneAndUpdate(
         { _id: officerId, "availability.day": date },
         { $set: { "availability.$.time": updatedTime } } // Update `time` for the matched `day`
       );
@@ -113,6 +113,7 @@ router.post("/api/:officerId/Schedule", async (req, res, next) => {
         duration: Number(duration),
         location: location,
         date: date,
+        time: time,
       });
       newSchedule.save();
       sendEmail(

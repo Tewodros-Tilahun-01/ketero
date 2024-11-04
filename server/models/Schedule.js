@@ -7,6 +7,7 @@ const schedule = new mongoose.Schema({
   duration: Number,
   location: String,
   date: String,
+  time: String,
 });
 const Schedule = mongoose.model("Schedule", schedule);
 

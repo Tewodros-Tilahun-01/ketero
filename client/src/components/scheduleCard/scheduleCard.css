@@ -18,6 +18,12 @@
   text-transform: capitalize;
 }
 .schedule-card .s-time {
+  margin-bottom: 0px;
+  margin-top: 4px;
+  font-size: 18px;
+  color: rgba(26, 26, 26, 0.61);
+}
+.schedule-card .ap-time {
   margin-bottom: 18px;
   margin-top: 4px;
   font-size: 18px;

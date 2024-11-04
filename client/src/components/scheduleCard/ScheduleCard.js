@@ -26,15 +26,18 @@ function ScheduleCard({ schedule, setSchedule }) {
     }, 8000); // 8 seconds loading
     return () => clearTimeout(timer);
   };
-  const { date, duration, eventName, location, _id } = schedule;
+  const { date, duration, eventName, location, _id, time } = schedule;
   return (
     <div className="schedule-card">
       <h2>{eventName}</h2>
       <p className="s-time">{duration} Minute</p>
+      <p className="ap-time">{time}</p>
+
       <p className="location">
         <CiLocationOn />
         <span>{location}</span>
       </p>
+
       <p className="date">{date} </p>
       <button className="delete-btn" onClick={() => deleteDate(_id)}>
         {loading ? <Spinner /> : "Cancel"}
