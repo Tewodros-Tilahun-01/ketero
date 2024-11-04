@@ -115,11 +115,11 @@ router.post("/api/:officerId/Schedule", async (req, res, next) => {
         date: date,
       });
       newSchedule.save();
-      // sendEmail(
-      //   officer.email,
-      //   "Your Appointment is Scheduled!",
-      //   `Hello ${officer.firstName} ${officer.lastName}, \n\nWe are pleased to inform you that your appointment has been successfully scheduled.\n\nAppointment Details: \n Date: ${date} \n duration: ${duration} \n location: ${location} \n\nIf you need to make any changes, feel free to contact us at ketero321@gmail.com \n\nThank you for choosing us, and we look forward to seeing you! \n\nBest regards, \nketero \nketero321@gmail.com`
-      // );
+      sendEmail(
+        officer.email,
+        "Your Appointment is Scheduled!",
+        `Hello ${officer.firstName} ${officer.lastName}, \n\nWe are pleased to inform you that your appointment has been successfully scheduled.\n\nAppointment Details: \n Date: ${date} \n duration: ${duration} \n location: ${location} \n\nIf you need to make any changes, feel free to contact us at ketero321@gmail.com \n\nThank you for choosing us, and we look forward to seeing you! \n\nBest regards, \nketero \nketero321@gmail.com`
+      );
       res.send({ states: true });
     } else {
       res.send({ states: false, message: "does not have that much time" });
@@ -169,16 +169,16 @@ router.delete("/api/schedule/:id", async (req, res) => {
 
       const deletedSchedule = await Schedule.findByIdAndDelete(id);
 
-      // sendEmail(
-      //   officer.email,
-      //   "Your Appointment has been Canceled",
-      //   `Hello ${officer.firstName} ${officer.lastName} \n\n\nWe regret to inform you that your upcoming appointment scheduled for ${deletedSchedule.date} has been canceled. We apologize for any inconvenience this may cause and appreciate your understanding. \n\n If you would like to reschedule, please contact us at ketero321@gmail.com or visit our scheduling page at ketero.com. \n\n\n Thank you for your patience, and we look forward to assisting you. \n\n\n Sincerely, \n ketero \n ketero321@gmail.com`
-      // );
-      // sendEmail(
-      //   customer.email,
-      //   "Your Appointment has been Canceled",
-      //   `Hello ${customer.firstName} ${customer.lastName} \n\n\nWe regret to inform you that your upcoming appointment scheduled for ${deletedSchedule.date} has been canceled. We apologize for any inconvenience this may cause and appreciate your understanding. \n\n If you would like to reschedule, please contact us at ketero321@gmail.com or visit our scheduling page at ketero.com. \n\n\n Thank you for your patience, and we look forward to assisting you. \n\n\n Sincerely, \n ketero \n ketero321@gmail.com`
-      // );
+      sendEmail(
+        officer.email,
+        "Your Appointment has been Canceled",
+        `Hello ${officer.firstName} ${officer.lastName} \n\n\nWe regret to inform you that your upcoming appointment scheduled for ${deletedSchedule.date} has been canceled. We apologize for any inconvenience this may cause and appreciate your understanding. \n\n If you would like to reschedule, please contact us at ketero321@gmail.com or visit our scheduling page at ketero.com. \n\n\n Thank you for your patience, and we look forward to assisting you. \n\n\n Sincerely, \n ketero \n ketero321@gmail.com`
+      );
+      sendEmail(
+        customer.email,
+        "Your Appointment has been Canceled",
+        `Hello ${customer.firstName} ${customer.lastName} \n\n\nWe regret to inform you that your upcoming appointment scheduled for ${deletedSchedule.date} has been canceled. We apologize for any inconvenience this may cause and appreciate your understanding. \n\n If you would like to reschedule, please contact us at ketero321@gmail.com or visit our scheduling page at ketero.com. \n\n\n Thank you for your patience, and we look forward to assisting you. \n\n\n Sincerely, \n ketero \n ketero321@gmail.com`
+      );
 
       const newSchedule = await Schedule.find({
         $or: [{ officerId: req.user.id }, { customerId: req.user.id }],
