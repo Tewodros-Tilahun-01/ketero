@@ -30,12 +30,12 @@ function ScheduleCard({ schedule, setSchedule }) {
   return (
     <div className="schedule-card">
       <h2>{eventName}</h2>
-      <p className="s-time">{duration}</p>
+      <p className="s-time">{duration} Minute</p>
       <p className="location">
         <CiLocationOn />
         <span>{location}</span>
       </p>
-      <p className="date">{date}</p>
+      <p className="date">{date} </p>
       <button className="delete-btn" onClick={() => deleteDate(_id)}>
         {loading ? <Spinner /> : "Cancel"}
       </button>

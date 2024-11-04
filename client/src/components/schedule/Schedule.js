@@ -11,6 +11,7 @@ function Schedule() {
 
   const [loading, setLoading] = useState(false);
   const [availableDates, setAvailableDates] = useState([]);
+  const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
   const { id } = useParams();
   const [formData, setFormData] = useState({
@@ -65,10 +66,18 @@ function Schedule() {
     if (Object.keys(newErrors).length === 0) {
       setLoading(true);
       try {
-        await axios.post(`http://localhost:5000/api/${id}/schedule`, formData, {
-          withCredentials: true, // Enable sending cookies with the request
-        });
-        navigate("/customerdashboard/meeting");
+        const res = await axios.post(
+          `http://localhost:5000/api/${id}/schedule`,
+          formData,
+          {
+            withCredentials: true, // Enable sending cookies with the request
+          }
+        );
+        if (res.data.states) {
+          navigate("/customerdashboard/meeting");
+        } else {
+          setMessage(res.data.message);
+        }
 
         setLoading(false);
       } catch (error) {
@@ -98,9 +107,10 @@ function Schedule() {
           <div>
             <label>Duration</label>
             <input
-              type="text"
+              type="number"
               className="Duration"
               name="duration"
+              min={1}
               value={formData.duration}
               onChange={handleChange}
             />
@@ -121,15 +131,16 @@ function Schedule() {
           <select onChange={(e) => handleDateChange(e.target.value)}>
             <option value="">Choose a date</option>
             {availableDates.map((date) => (
-              <option key={date} value={date}>
-                {date}
+              <option key={date.day} value={date.day}>
+                {date.day}
               </option>
             ))}
           </select>
           {errors.date && <p className="error-text">{errors.date}</p>}
         </div>
+        <p className="error-text main-message">{message}</p>
         <div className="submit-btn">
-          <button>{loading ? <Spinner /> : "Submit"}</button>
+          {loading ? <Spinner /> : <button>Submit</button>}
         </div>
       </form>
     </div>

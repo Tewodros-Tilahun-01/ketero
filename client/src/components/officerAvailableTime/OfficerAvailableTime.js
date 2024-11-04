@@ -9,6 +9,7 @@ import DataNotFound from "../dataNotFound/DataNotFound";
 const OfficerAvailableTime = () => {
   const [dates, setDates] = useState([]);
   const [newDate, setNewDate] = useState(null);
+  const [newTime, setNewTime] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,12 +41,13 @@ const OfficerAvailableTime = () => {
   }
   const addDate = async () => {
     try {
-      if (newDate) {
+      if (newDate && newTime) {
         const formattedDate = toLocalISOString(newDate).split("T")[0]; // Format date to YYYY-MM-DD
         const response = await axios.post(
           "http://localhost:5000/api/dates",
           {
             date: formattedDate,
+            time: newTime,
           },
           {
             withCredentials: true,
@@ -53,6 +55,7 @@ const OfficerAvailableTime = () => {
         );
         setDates(response.data.availability || []);
         setNewDate(null);
+        setNewTime("");
       }
     } catch (error) {
       console.error("Error adding date:", error);
@@ -84,6 +87,16 @@ const OfficerAvailableTime = () => {
           dateFormat="yyyy-MM-dd"
           className="date-picker"
         />
+        <div className="selected-time-wrapper">
+          <input
+            min={1}
+            className="date-picker selected-time"
+            type="number"
+            onChange={(e) => setNewTime(e.target.value)}
+            value={newTime}
+          />
+        </div>
+        <label>min</label>
         <button className="add-btn" onClick={addDate}>
           Add Date
         </button>
@@ -95,8 +108,12 @@ const OfficerAvailableTime = () => {
         ) : dates && dates.length > 0 ? (
           dates.map((date, index) => (
             <li key={index} className="date-item">
-              {date}
-              <button className="delete-btn" onClick={() => deleteDate(date)}>
+              <span>{date.day}</span>
+              <span>{date.time} min</span>
+              <button
+                className="delete-btn"
+                onClick={() => deleteDate(date.day)}
+              >
                 Delete
               </button>
             </li>

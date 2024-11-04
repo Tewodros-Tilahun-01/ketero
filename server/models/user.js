@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
   email: String,
   role: String,
   admin: Boolean,
-  availability: [String],
+  availability: [Object],
 });
 const User = mongoose.model("User", UserSchema);
 

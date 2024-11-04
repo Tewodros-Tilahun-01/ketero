@@ -4,7 +4,7 @@ const schedule = new mongoose.Schema({
   officerId: String,
   customerId: String,
   eventName: String,
-  duration: String,
+  duration: Number,
   location: String,
   date: String,
 });

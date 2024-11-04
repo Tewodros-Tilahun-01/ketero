@@ -32,7 +32,15 @@
   align-items: center;
   margin-top: 4px;
 }
-
+.date-manager .selected-time {
+  width: 100%;
+}
+.date-manager .selected-time-wrapper {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  width: 70px;
+}
 .date-item:last-child {
   border-bottom: none;
 }
@@ -62,6 +70,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+  gap: 4px;
 }
 
 .date-picker {

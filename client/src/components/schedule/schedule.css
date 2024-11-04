@@ -41,18 +41,30 @@
   width: 90%;
   margin-top: 20px;
 }
-.schedule .submit-btn button {
+.schedule .submit-btn {
   padding: 18px 40px;
-  width: 100%;
+  width: 90%;
   background-color: rgb(78, 139, 189);
   border: none;
   border-radius: 12px;
+  margin-bottom: 30px;
+}
+.schedule .submit-btn button {
+  border: none;
+  width: 100%;
+  height: 100%;
   color: white;
   font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
+  background-color: rgb(78, 139, 189);
 }
 .schedule .error-text {
   color: red;
   font-size: 12px;
+}
+.schedule .main-message {
+  color: red;
+  font-size: 16px;
+  text-align: center;
 }
