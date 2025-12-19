@@ -198,7 +198,10 @@ router.get("/api/officers", (req, res, next) => {
       }
     );
     let officerHasTime = response.filter((officer) => {
-      return officer.availability.length > 0;
+      if (officer.availability) {
+        return officer.availability.length > 0;
+      }
+      return false;
     });
     res.send(officerHasTime);
   };
