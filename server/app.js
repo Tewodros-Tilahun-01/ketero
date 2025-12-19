@@ -20,7 +20,7 @@ app.use(
 
 // Connect to MongoDB
 connectDB();
-
+app.set("trust proxy", 1);
 // Set up session middleware
 app.use(
   session({
@@ -36,7 +36,6 @@ app.use(
       maxAge: 1000 * 60 * 60 * 24, // Equals 1 day
       secure: true,
       sameSite: "none",
-      domain: "ketero.onrender.com",
     },
   })
 );
